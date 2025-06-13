@@ -4,6 +4,8 @@ import NextJS from "./icons/NextJS.astro"
 import Tailwind from "./icons/Tailwind.astro"
 import Link from "./icons/Link.astro"
 import LinkButton from "./LinkButton.astro"
+import ReactNative from "./icons/ReactNative.astro"
+import AstroIcon from "./icons/AstroIcon.astro"
 
 const TAGS = {
   NEXT: {
@@ -16,6 +18,16 @@ const TAGS = {
     class: "bg-[#003159] text-white",
     icon: Tailwind,
   },
+    RN: {
+    name: "React Native",
+    class: "bg-[#61DBFB] text-black",
+    icon: ReactNative,
+  },
+    ASTRO: {
+    name: "Astro",
+    class: "bg-[#FF5D01] text-white",
+    icon: AstroIcon,
+  },
 }
 const PROJECTS = [
   {
@@ -24,7 +36,7 @@ const PROJECTS = [
       "Aplicación web real en producción que permite a usuarios gestionar y presentar su declaración de la renta en España. Desarrollo fullstack: integración con API de la Agencia Tributaria, validaciones, autenticación y panel para asesores. Diseño moderno y funcional.",
     link: "https://rentas.measesoran.eu",
     image: "/projects/rentasapp.png", // Asegúrate de tener la imagen en tu carpeta
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+    tags: [TAGS.RN, TAGS.NEXT, TAGS.TAILWIND],
   },
   {
     title: "Traveo - Web de viajes",
@@ -33,7 +45,7 @@ const PROJECTS = [
     link: "https://traveo.vercel.app/",
     github: "https://github.com/Estivbi/web-de-viajes",
     image: "/projects/traveo.png", // Asegúrate de incluir esta imagen
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+    tags: [TAGS.ASTRO, TAGS.TAILWIND],
   },
 ]
 ---
