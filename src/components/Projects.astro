@@ -6,6 +6,11 @@ import Link from "./icons/Link.astro"
 import LinkButton from "./LinkButton.astro"
 import ReactNative from "./icons/ReactNative.astro"
 import AstroIcon from "./icons/AstroIcon.astro"
+import Python from "./icons/Python.astro"
+import Flask from "./icons/Flask.astro"
+import Bootstrap from "./icons/Bootstrap.astro"
+import Sanity from "./icons/Sanity.astro"
+import React from "./icons/React.astro"
 
 const TAGS = {
   NEXT: {
@@ -28,6 +33,31 @@ const TAGS = {
     class: "bg-[#FF5D01] text-white",
     icon: AstroIcon,
   },
+  PYTHON: {
+    name: "Python",
+    class: "bg-[#3776AB] text-white",
+    icon: Python,
+  },
+  FLASK: {
+    name: "Flask",
+    class: "bg-[#000000] text-white",
+    icon: Flask,
+  },
+  BOOTSTRAP: {
+    name: "Bootstrap",
+    class: "bg-[#563D7C] text-white",
+    icon: Bootstrap,
+  },
+  SANITY: {
+    name: "Sanity",
+    class: "bg-[#F03E2F] text-white",
+    icon: Sanity
+  },
+  REACT: {
+    name: "React",
+    class: "bg-[#61DAFB] text-black",
+    icon: React,
+  },
 }
 const PROJECTS = [
   {
@@ -38,6 +68,14 @@ const PROJECTS = [
     image: "/projects/rentasapp.png", // Asegúrate de tener la imagen en tu carpeta
     tags: [TAGS.RN, TAGS.NEXT, TAGS.TAILWIND],
   },
+    {
+    title: "Revista Victoria",
+    description:
+      "Pagina web de la revista Victoria, un proyecto personal y en producción que muestra artículos y noticias sobre diversos temas. Utiliza Astro como framework junto con React para un diseño moderno y responsivo. Incluye rutas dinámicas y buenas prácticas de desarrollo web. Usa Sanity como CMS para la gestión de contenido.",
+    link: "https://www.victoriarevista.com/",
+    image: "/projects/revistavictoria.png", // Asegúrate de tener la imagen en tu carpeta
+    tags: [TAGS.ASTRO, TAGS.REACT, TAGS.SANITY],
+  },
   {
     title: "Traveo - Web de viajes",
     description:
@@ -46,6 +84,15 @@ const PROJECTS = [
     github: "https://github.com/Estivbi/web-de-viajes",
     image: "/projects/traveo.png", // Asegúrate de incluir esta imagen
     tags: [TAGS.ASTRO, TAGS.TAILWIND],
+  },
+  {
+    title: "Torneo de Videojuegos",
+    description:
+      "Aplicación web desarrollada en Python con Flask para la gestión de un torneo de videojuegos. Permite a los usuarios registrarse, inscribirse en torneos y ver el estado de las partidas. Incluye un sistema de autenticación y una interfaz sencilla.",
+    link: "https://torneo-videojuegos.onrender.com/",
+    github: "https://github.com/Estivbi/torneo_videojuegos",
+    image: "/projects/torneovideojuegos.png", 
+    tags: [TAGS.PYTHON, TAGS.FLASK, TAGS.BOOTSTRAP],
   },
 ]
 ---
