@@ -11,6 +11,12 @@ import Flask from "./icons/Flask.astro"
 import Bootstrap from "./icons/Bootstrap.astro"
 import Sanity from "./icons/Sanity.astro"
 import React from "./icons/React.astro"
+import JavaScript from "./icons/JavaScript.astro"
+import PHP from "./icons/PHP.astro"
+import MySQL from "./icons/MySQL.astro"
+import Oracle from "./icons/Oracle.astro"
+import AWS from "./icons/AWS.astro"
+import DevOps from "./icons/DevOps.astro"
 
 const TAGS = {
   NEXT: {
@@ -58,14 +64,51 @@ const TAGS = {
     class: "bg-[#61DAFB] text-black",
     icon: React,
   },
+    JAVASCRIPT: {
+      name: "JavaScript",
+      class: "bg-[#F7DF1E] text-black",
+      icon: JavaScript,
+    },
+    PHP: {
+      name: "PHP",
+      class: "bg-[#777BB4] text-white",
+      icon: PHP,
+    },
+    MYSQL: {
+      name: "MySQL",
+      class: "bg-[#00758F] text-white",
+      icon: MySQL,
+    },
+    ORACLE: {
+      name: "Oracle",
+      class: "bg-[#F80000] text-white",
+      icon: Oracle,
+    },
+    AWS: {
+      name: "AWS",
+      class: "bg-[#FF9900] text-black",
+      icon: AWS,
+    },
+    DEVOPS: {
+      name: "DevOps",
+      class: "bg-[#2D9CDB] text-white",
+      icon: DevOps,
+    },
 }
 const PROJECTS = [
+  {
+    title: "Indra / Proyecto en cliente para importante banco español",
+    description:
+      "Actualmente formo parte del equipo de desarrollo y monitorización, donde trabajo en la mejora y evolución del sistema interno de operaciones.\nParticipo en el desarrollo full stack, optimizando tanto el frontend (JavaScript) como el backend (PHP) y colaborando en la migración de bases de datos de MySQL a Oracle.\n\nAdemás, aplico buenas prácticas de arquitectura hexagonal, ejecuto tests automáticos antes de cada despliegue y trabajo en entornos DevOps, gestionando entornos de desarrollo, pruebas y producción.\n\nTambién participo en la monitorización de sistemas y agentes automatizados, con herramientas como Bhom y Helix, gestionando incidencias en servidores Linux, Windows y AWS.\nEste proyecto me ha permitido seguir creciendo tanto en desarrollo como en operaciones, uniendo ambas áreas para avanzar hacia mi objetivo profesional: convertirme en ingeniera DevOps.",
+    image: "/projects/stack-indra.png",
+      tags: [TAGS.JAVASCRIPT, TAGS.PHP, TAGS.MYSQL, TAGS.ORACLE, TAGS.AWS, TAGS.DEVOPS],
+  },
   {
     title: "Me Asesoran Rentas",
     description:
       "Aplicación web real en producción que permite a usuarios gestionar y presentar su declaración de la renta en España. Desarrollo fullstack: integración con API de la Agencia Tributaria, validaciones, autenticación y panel para asesores. Diseño moderno y funcional.",
     link: "https://rentas.measesoran.eu",
-    image: "/projects/rentasapp.png", // Asegúrate de tener la imagen en tu carpeta
+    image: "/projects/rentasapp.png",
     tags: [TAGS.RN, TAGS.NEXT, TAGS.TAILWIND],
   },
     {
