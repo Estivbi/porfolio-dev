@@ -1,24 +1,62 @@
 ---
- const personalImageAlt = "Carolina Rodríguez"
 ---
 
-<article class="flex flex-col items-center justify-center gap-8 text-gray-700 dark:text-gray-300 md:flex-row">
-<div
-    class="[&>p]:mb-4 [&>p>strong]:text-yellow-500 dark:[&>p>strong]:text-yellow-100 [&>p>strong]:font-normal [&>p>strong]:font-mono text-pretty order-2 md:order-1"
-  >
-    <p>
-      Hola, soy Carolina Rodríguez, <strong>desarrolladora full stack</strong> nacida en Madrid en 1994 y apasionada del desarrollo de software desde muy joven. Siempre he sentido una gran curiosidad por la tecnología, y los videojuegos y ordenadores despertaron en mí ese interés que hoy se ha convertido en mi vocación.
-    </p>
-
-    <p>
-      Mi formación incluye el <strong>Grado Superior de Desarrollo de Aplicaciones Multiplataforma (DAM)</strong> y un <strong>bootcamp intensivo de Python</strong> que complementaron mi conocimiento autodidacta. He tenido la oportunidad de <strong>desarrollar aplicaciones web en producción</strong> que son utilizadas por usuarios reales, incluyendo sistemas de gestión complejos con integración de APIs, autenticación y paneles de administración.
-    </p>
-
-    <p>
-      Me encanta trabajar en <strong>proyectos que aportan valor real</strong> y que suponen un reto técnico. Me involucro tanto en el <strong>desarrollo web y móvil</strong> como en aspectos de <strong>diseño UI/UX</strong> y arquitectura de software. Este portfolio refleja mi evolución como desarrolladora y mi compromiso con crear software útil y de calidad.
-    </p>
+<div class="about-grid">
+  <div>
+    <blockquote class="about-quote r d2">
+      "Los videojuegos y los ordenadores encendieron algo que ya no se apaga."
+    </blockquote>
+    <div class="about-body r d3">
+      <p>Soy <strong>Carolina Rodríguez</strong>, desarrolladora fullstack de Madrid. Empecé de forma autodidacta — los ordenadores siempre me llamaron — y lo formalicé con el <strong>Grado Superior en DAM</strong> y un bootcamp intensivo de Python.</p>
+      <p>Hoy trabajo en <strong>proyectos reales en producción</strong>: desde plataformas fiscales con integración oficial con la Agencia Tributaria hasta sistemas de banca en Indra. No me conformo con que algo funcione — tiene que ser escalable y con impacto real.</p>
+      <p>Bajo el sello <strong>Stibios</strong> construyo mis propios productos digitales, explorando los límites del <strong>desarrollo con IA</strong>, la generación de vídeo automática y los agentes autónomos.</p>
+    </div>
   </div>
 
-  <img width="200" height="200" src="/me.jpg" alt={personalImageAlt} class="order-1 object-cover w-64 h-full p-1 md:order-2 rotate-3 lg:p-2 lg:w-64 aspect-square rounded-2xl bg-black/20 dark:bg-yellow-500/5 ring-1 ring-black/70 dark:ring-white/20 " style="object-position: 50% 50%">
+  <div class="about-side r d4">
+    <img src="/me.jpg" alt="Carolina Rodríguez" class="about-img" />
+    <div class="about-code">
+      <div><span class="code-key">name</span>: <span class="code-str">"Carolina Rodríguez"</span></div>
+      <div><span class="code-key">base</span>: <span class="code-str">"Madrid, ES"</span></div>
+      <div><span class="code-key">focus</span>: <span class="code-str">"Fullstack + AI"</span></div>
+      <div><span class="code-key">open</span>: <span class="code-bool">true</span></div>
+    </div>
+  </div>
+</div>
 
-</article>
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-quote {
+    font-size: 1.2rem; font-weight: 500; color: var(--white);
+    line-height: 1.55; letter-spacing: -.01em;
+    border-left: 2px solid var(--accent); padding-left: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .about-body { font-size: .84rem; line-height: 1.9; color: var(--muted2); }
+  .about-body p { margin-bottom: 1.1rem; }
+  .about-body strong { color: var(--text); font-weight: 500; }
+
+  .about-side   { display: flex; flex-direction: column; gap: 1.5rem; }
+  .about-img    { width: 100%; border-radius: 10px; border: 1px solid var(--border); filter: grayscale(10%); display: block; }
+
+  .about-code {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 1rem 1.25rem;
+    font-family: 'JetBrains Mono', monospace; font-size: .65rem;
+    line-height: 1.9; color: var(--muted2);
+  }
+  .code-key  { color: var(--accent); }
+  .code-str  { color: #f9a870; }
+  .code-bool { color: var(--green); }
+
+  @media(max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  }
+</style>

@@ -1,29 +1,27 @@
 ---
-const currentYear = new Date().getFullYear()
+const year = new Date().getFullYear()
 ---
 
-<footer
-  class="opacity-80 m-4 min-[375px]:pl-4 md:pl-0 mt-16 w-full mx-auto container lg:max-w-4xl md:max-w-2xl mb-10 flex justify-center"
->
-  <div
-    class="rounded-lg w-full max-w-screen-xl mx-auto md:flex md:items-center md:justify-between py-4"
-  >
-    <span class="text-sm sm:text-center text-zinc-800/90 dark:text-zinc-200/90"
-      >© {currentYear}
-      <!-- <a href="https://midu.dev/" class="hover:underline">caroldev</a>-->Casi
-      todos los derechos reservados a midudev
-    </span>
-    <ul
-      class="flex flex-wrap items-center mt-3 text-sm font-medium dark:text-white/90 sm:mt-0"
-    >
-      <li>
-        <a href="/#sobre-mi" class="hover:underline me-4 md:me-6">Sobre mí</a>
-      </li>
-      <li>
-        <a id="contacto" href="mailto:carolinarb1994@gmail.com" class="hover:underline"
-          >Contacto</a
-        >
-      </li>
-    </ul>
-  </div>
+<footer>
+  <p>© {year} Carolina Rodríguez · <a href="https://stibios.com" target="_blank" rel="noopener">Stibios Labs</a></p>
+  <p>Madrid, España</p>
 </footer>
+
+<style>
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 1.25rem 5vw;
+    display: flex; justify-content: space-between; align-items: center;
+    position: relative; z-index: 2;
+  }
+  footer p {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .65rem; letter-spacing: .08em; color: var(--muted);
+  }
+  footer a { color: var(--muted2); text-decoration: none; transition: color .2s; }
+  footer a:hover { color: var(--accent); }
+
+  @media(max-width: 900px) {
+    footer { padding: 1.25rem; flex-direction: column; gap: .5rem; text-align: center; }
+  }
+</style>

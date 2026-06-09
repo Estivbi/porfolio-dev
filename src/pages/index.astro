@@ -1,51 +1,151 @@
 ---
-import Layout from "@/layouts/Layout.astro"
-
-import AboutMe from "@/components/AboutMe.astro"
-import Briefcase from "@/components/icons/Briefcase.astro"
-import CodeIcon from "@/components/icons/Code.astro"
+import Layout   from "@/layouts/Layout.astro"
+import Header   from "@/components/Header.astro"
+import Hero     from "@/components/Hero.astro"
 import Experience from "@/components/Experience.astro"
-import ProfileCheck from "@/components/icons/ProfileCheck.astro"
-import Projects from "@/components/Projects.astro"
-import SectionContainer from "@/components/SectionContainer.astro"
-import Hero from "@/components/Hero.astro"
-import TitleSection from "@/components/TitleSection.astro"
+import Projects  from "@/components/Projects.astro"
+import AboutMe  from "@/components/AboutMe.astro"
+import Footer   from "@/components/Footer.astro"
+
+const STACK = [
+  "Next.js","React","Astro","TypeScript","Python","FastAPI",
+  "LangGraph","Celery","Redis","PostgreSQL","Supabase","Docker",
+  "AWS","ElevenLabs","Fal.ai","Tailwind","PHP","Oracle",
+  "React Native","Sanity CMS",
+]
 ---
 
 <Layout
-  title="Porfolio de Carolina - Desarrolladora y Programadora Web con 2 años de experiencia"
-  description="Contrata a Carolina para crear tu aplicación web o móvil. Desarrolladora Web. Especializada en crear aplicaciones únicas."
+  title="Carolina Rodríguez · Fullstack Developer"
+  description="Desarrolladora Full Stack de Madrid. Aplicaciones web, móvil y sistemas de IA en producción. React, Python, Next.js, LangGraph."
 >
-  <main class="px-4">
-    <SectionContainer class="py-16 md:py-36">
-      <Hero>
-      </slot>
-    </Hero>
-    </SectionContainer>
-    <div class="space-y-24">
-    <SectionContainer id="experiencia">
-      <TitleSection>
-        <Briefcase class="size-8" />
-        Experiencia laboral
-      </TitleSection>
+  <Header />
+
+  <main style="position:relative;z-index:2;">
+    <Hero />
+
+    <div class="divider"></div>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="experiencia">
+      <div class="section-label r">01 — experiencia</div>
+      <h2 class="section-title r-clip d1">Lo que he<br/><span class="dim">construido.</span></h2>
       <Experience />
-    </SectionContainer>
+    </section>
 
-    <SectionContainer id="proyectos">
-      <TitleSection>
-        <CodeIcon class="size-7" />
-        Proyectos
-      </TitleSection>
+    <div class="divider"></div>
+
+    <!-- PROJECTS -->
+    <section class="section" id="proyectos">
+      <div class="section-label r">02 — proyectos</div>
+      <h2 class="section-title r-clip d1">Producción,<br/><span class="dim">no demos.</span></h2>
       <Projects />
-    </SectionContainer>
+    </section>
 
-    <SectionContainer id="sobre-mi">
-      <TitleSection>
-        <ProfileCheck class="size-8" />
-        Sobre mí
-      </TitleSection>
+    <!-- STACK -->
+    <div class="stack-wrap">
+      <div class="section-label r">stack</div>
+      <div class="stack-grid r d1">
+        {STACK.map(chip => <span class="stack-chip">{chip}</span>)}
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ABOUT -->
+    <section class="section" id="sobre-mi">
+      <div class="section-label r">03 — sobre mí</div>
+      <h2 class="section-title r-clip d1">Builder.<br/><span class="dim">Por vocación.</span></h2>
       <AboutMe />
-    </SectionContainer>
-  </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CONTACT -->
+    <div class="contact-section" id="contacto">
+      <h2 class="contact-h r">Construyamos<br/><span class="dim">algo juntos.</span></h2>
+      <div class="contact-row">
+        <a href="mailto:carolinarb1994@gmail.com" class="btn-email r d1">
+          carolinarb1994@gmail.com →
+        </a>
+        <div class="contact-links r d2">
+          <a href="https://linkedin.com/in/carolinarodriguezbarcena" target="_blank" rel="noopener" class="contact-link">→ LinkedIn</a>
+          <a href="https://github.com/Estivbi" target="_blank" rel="noopener" class="contact-link">→ GitHub</a>
+          <a href="https://stibios.com" target="_blank" rel="noopener" class="contact-link">→ stibios.com</a>
+        </div>
+      </div>
+    </div>
   </main>
+
+  <Footer />
 </Layout>
+
+<style>
+  /* SECTIONS */
+  .section {
+    padding: 3rem 5vw; max-width: 1400px; margin: 0 auto;
+  }
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .68rem; letter-spacing: .15em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: .6rem;
+    display: flex; align-items: center; gap: .75rem;
+  }
+  .section-label::before { content: ''; display: block; width: 20px; height: 1px; background: var(--accent); }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600; letter-spacing: -.025em;
+    color: var(--white); line-height: 1.1; margin-bottom: 1.5rem;
+  }
+  .section-title .dim { color: var(--muted); font-weight: 300; }
+
+  /* STACK */
+  .stack-wrap { padding: 2rem 5vw 3rem; max-width: 1400px; margin: 0 auto; }
+  .stack-grid { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; }
+  .stack-chip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .68rem; letter-spacing: .06em;
+    padding: .35rem .8rem; border: 1px solid var(--border);
+    color: var(--muted2); border-radius: 6px; transition: all .2s;
+  }
+  .stack-chip:hover { border-color: var(--accent); color: var(--text); background: var(--accent-lo); }
+
+  /* CONTACT */
+  .contact-section { padding: 3rem 5vw 4rem; max-width: 1400px; margin: 0 auto; }
+  .contact-h {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 600; letter-spacing: -.04em;
+    color: var(--white); line-height: .95; margin-bottom: 3rem;
+  }
+  .contact-h .dim { color: var(--muted); font-weight: 300; }
+
+  .contact-row {
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+  }
+  .btn-email {
+    display: inline-flex; align-items: center;
+    font-size: .85rem; font-weight: 500; text-decoration: none;
+    background: var(--accent); color: var(--white);
+    border-radius: 8px; padding: .7rem 1.5rem; transition: all .2s; cursor: none;
+  }
+  .btn-email:hover { background: #8f84f9; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(124,110,247,.3); }
+
+  .contact-links { display: flex; flex-direction: column; gap: .75rem; }
+  .contact-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .75rem; letter-spacing: .06em;
+    color: var(--muted2); text-decoration: none;
+    display: inline-flex; align-items: center; gap: .5rem; transition: color .2s;
+  }
+  .contact-link:hover { color: var(--accent); }
+
+  @media(max-width: 900px) {
+    .section      { padding: 2.5rem 1.25rem; }
+    .stack-wrap   { padding: 2rem 1.25rem 4rem; }
+    .contact-section { padding: 4rem 1.25rem 5rem; }
+    .divider      { margin: 0 1.25rem; }
+    .contact-row  { flex-direction: column; align-items: flex-start; }
+  }
+</style>

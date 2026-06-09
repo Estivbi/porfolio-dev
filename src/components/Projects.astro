@@ -1,195 +1,203 @@
 ---
-import GitHub from "./icons/GitHub.astro"
-import NextJS from "./icons/NextJS.astro"
-import Tailwind from "./icons/Tailwind.astro"
-import Link from "./icons/Link.astro"
-import LinkButton from "./LinkButton.astro"
-import ReactNative from "./icons/ReactNative.astro"
-import AstroIcon from "./icons/AstroIcon.astro"
-import Python from "./icons/Python.astro"
-import Flask from "./icons/Flask.astro"
-import Bootstrap from "./icons/Bootstrap.astro"
-import Sanity from "./icons/Sanity.astro"
-import React from "./icons/React.astro"
-import JavaScript from "./icons/JavaScript.astro"
-import PHP from "./icons/PHP.astro"
-import MySQL from "./icons/MySQL.astro"
-import Oracle from "./icons/Oracle.astro"
-import AWS from "./icons/AWS.astro"
-import DevOps from "./icons/DevOps.astro"
-
-const TAGS = {
-  NEXT: {
-    name: "Next.js",
-    class: "bg-black text-white",
-    icon: NextJS,
-  },
-  TAILWIND: {
-    name: "Tailwind CSS",
-    class: "bg-[#003159] text-white",
-    icon: Tailwind,
-  },
-    RN: {
-    name: "React Native",
-    class: "bg-[#61DBFB] text-black",
-    icon: ReactNative,
-  },
-    ASTRO: {
-    name: "Astro",
-    class: "bg-[#FF5D01] text-white",
-    icon: AstroIcon,
-  },
-  PYTHON: {
-    name: "Python",
-    class: "bg-[#3776AB] text-white",
-    icon: Python,
-  },
-  FLASK: {
-    name: "Flask",
-    class: "bg-[#000000] text-white",
-    icon: Flask,
-  },
-  BOOTSTRAP: {
-    name: "Bootstrap",
-    class: "bg-[#563D7C] text-white",
-    icon: Bootstrap,
-  },
-  SANITY: {
-    name: "Sanity",
-    class: "bg-[#F03E2F] text-white",
-    icon: Sanity
-  },
-  REACT: {
-    name: "React",
-    class: "bg-[#61DAFB] text-black",
-    icon: React,
-  },
-    JAVASCRIPT: {
-      name: "JavaScript",
-      class: "bg-[#F7DF1E] text-black",
-      icon: JavaScript,
-    },
-    PHP: {
-      name: "PHP",
-      class: "bg-[#777BB4] text-white",
-      icon: PHP,
-    },
-    MYSQL: {
-      name: "MySQL",
-      class: "bg-[#00758F] text-white",
-      icon: MySQL,
-    },
-    ORACLE: {
-      name: "Oracle",
-      class: "bg-[#F80000] text-white",
-      icon: Oracle,
-    },
-    AWS: {
-      name: "AWS",
-      class: "bg-[#FF9900] text-black",
-      icon: AWS,
-    },
-    DEVOPS: {
-      name: "DevOps",
-      class: "bg-[#2D9CDB] text-white",
-      icon: DevOps,
-    },
+interface Project {
+  num:      string
+  title:    string
+  tags:     string[]
+  desc:     string
+  image?:   string
+  link?:    string
+  github?:  string
+  wide?:    boolean
+  featured?: boolean
+  codeBlock?: boolean
 }
-const PROJECTS = [
+
+const PROJECTS: Project[] = [
   {
-    title: "Indra / Proyecto en cliente para importante banco español",
-    description:
-      "Actualmente formo parte del equipo de desarrollo y monitorización, donde trabajo en la mejora y evolución del sistema interno de operaciones.\nParticipo en el desarrollo full stack, optimizando tanto el frontend (JavaScript) como el backend (PHP) y colaborando en la migración de bases de datos de MySQL a Oracle.\n\nAdemás, aplico buenas prácticas de arquitectura hexagonal, ejecuto tests automáticos antes de cada despliegue y trabajo en entornos DevOps, gestionando entornos de desarrollo, pruebas y producción.\n\nTambién participo en la monitorización de sistemas y agentes automatizados, con herramientas como Bhom y Helix, gestionando incidencias en servidores Linux, Windows y AWS.",
-    image: "/projects/stack-indra.png",
-      tags: [TAGS.JAVASCRIPT, TAGS.PHP, TAGS.MYSQL, TAGS.ORACLE, TAGS.AWS, TAGS.DEVOPS],
+    num:      "project_01",
+    title:    "Me Asesoran Rentas",
+    tags:     ["Next.js", "React Native", "Tailwind", "APIs AEAT"],
+    desc:     "Plataforma fiscal real en producción. Integración con APIs oficiales de la Agencia Tributaria, sistema de autenticación oficial, validaciones complejas y panel exclusivo para asesores. Miles de usuarios activos.",
+    image:    "/projects/rentasapp.png",
+    link:     "https://rentas.measesoran.eu",
+    wide:     true,
+    featured: true,
   },
   {
-    title: "Me Asesoran Rentas",
-    description:
-      "Aplicación web real en producción que permite a usuarios gestionar y presentar su declaración de la renta en España. Desarrollo fullstack: integración con API de la Agencia Tributaria, validaciones, autenticación y panel para asesores. Diseño moderno y funcional.",
-    link: "https://rentas.measesoran.eu",
-    image: "/projects/rentasapp.png",
-    tags: [TAGS.RN, TAGS.NEXT, TAGS.TAILWIND],
-  },
-    {
-    title: "Revista Victoria",
-    description:
-      "Pagina web de la revista Victoria, un proyecto personal y en producción que muestra artículos y noticias sobre diversos temas. Utiliza Astro como framework junto con React para un diseño moderno y responsivo. Incluye rutas dinámicas y buenas prácticas de desarrollo web. Usa Sanity como CMS para la gestión de contenido.",
-    link: "https://www.victoriarevista.com/",
-    image: "/projects/revistavictoria.png", // Asegúrate de tener la imagen en tu carpeta
-    tags: [TAGS.ASTRO, TAGS.REACT, TAGS.SANITY],
+    num:      "project_02",
+    title:    "Indra · Sistema Bancario",
+    tags:     ["JavaScript", "PHP", "Oracle", "AWS"],
+    desc:     "Sistemas internos de operaciones para banco top-tier. Full stack, migración de base de datos, arquitectura hexagonal y monitorización de agentes automatizados.",
+    image:    "/projects/stack-indra.png",
   },
   {
-    title: "AgentVuelosBot - Bot de telegram para la búsqueda de vuelos",
-    description:
-    "Sistema de alertas inteligentes para vuelos baratos. Desarrollé un sistema completo de monitorización y notificación de ofertas de vuelos, orientado a usuarios que buscan optimizar su presupuesto de viaje. El proyecto integra un backend en Python (FastAPI), un bot conversacional en Telegram y una base de datos PostgreSQL, permitiendo a los usuarios crear alertas personalizadas según origen, destino, fechas y precio objetivo.",
-    link: "https://web.telegram.org/k/#@AgentVuelosBot",
-    github: "https://github.com/Estivbi/bot-agenteviajes",
-    image: "/projects/avatarbot.png", // Asegúrate de incluir esta imagen
-    tags: [TAGS.PYTHON],
+    num:      "project_03",
+    title:    "Revista Victoria",
+    tags:     ["Astro", "React", "Sanity CMS"],
+    desc:     "Plataforma editorial independiente construida desde cero. Performance-first, rutas dinámicas y diseño editorial custom. Producto propio en producción.",
+    image:    "/projects/revistavictoria.png",
+    link:     "https://www.victoriarevista.com/",
   },
   {
-    title: "Torneo de Videojuegos",
-    description:
-      "Aplicación web desarrollada en Python con Flask para la gestión de un torneo de videojuegos. Permite a los usuarios registrarse, inscribirse en torneos y ver el estado de las partidas. Incluye un sistema de autenticación y una interfaz sencilla.",
-    link: "https://torneo-videojuegos.onrender.com/",
-    github: "https://github.com/Estivbi/torneo_videojuegos",
-    image: "/projects/torneovideojuegos.png", 
-    tags: [TAGS.PYTHON, TAGS.FLASK, TAGS.BOOTSTRAP],
+    num:      "project_04 · Stibios · Producto propio",
+    title:    "Stibios Agent Platform",
+    tags:     ["Python", "LangGraph", "FastAPI", "Celery", "Redis", "Supabase", "Gemini", "Docker"],
+    desc:     "Plataforma de agentes autónomos 24/7 que gestiona operativa y contenido de todos los proyectos Stibios. 5 agentes en producción: Dev Briefing, News Intelligence, Blog Stibios, Blog Victoria y Lead Generation. Cada agente es un grafo LangGraph independiente con observabilidad completa y alertas Telegram.",
+    link:     "https://stibios.com",
+    codeBlock: true,
+  },
+  {
+    num:      "project_05",
+    title:    "AgentVuelosBot",
+    tags:     ["Python", "FastAPI", "PostgreSQL", "Telegram"],
+    desc:     "Sistema de alertas inteligentes para vuelos baratos. Backend en Python + FastAPI, bot conversacional en Telegram y base de datos PostgreSQL. Los usuarios crean alertas personalizadas según origen, destino, fechas y precio objetivo.",
+    link:     "https://web.telegram.org/k/#@AgentVuelosBot",
+    github:   "https://github.com/Estivbi/bot-agenteviajes",
+    image:    "/projects/avatarbot.png",
   },
 ]
 ---
 
-<div class="flex flex-col gap-y-16">
-  {
-    PROJECTS.map(({ image, title, description, tags, link, github }) => (
-    <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
-  <div class="w-full md:w-1/2">
-    <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
-      <img alt="Recién llegado vs 5 años en Nueva Zelanda" class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
-    </div>
-  </div>
-
-  <div class="w-full md:w-1/2 md:max-w-lg">
-    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
-      {title}
-    </h3>
-    <div class="flex flex-wrap mt-2">
-      <ul class="flex flex-row mb-2 gap-x-2">
-          {tags.map((tag) => (
-            <li>
-              <span
-                class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
-              >
-                <tag.icon class="size-4" />
-                {tag.name}
-              </span>
-            </li>
-          ))}
-        </ul>
-
-      <div class="mt-2 text-gray-700 dark:text-gray-400">{description}</div>
-      <footer class="flex items-end justify-start mt-4 gap-x-4">
-          {github && (
-            <LinkButton href={github}>
-              <GitHub class="size-6" />
-              Code
-              
-            </LinkButton>
+<div class="projects-grid">
+  {PROJECTS.map((p, i) => (
+    <div class={`project-card r d${Math.min(i + 1, 5)}${p.wide ? ' wide' : ''}`}>
+      <div class="project-info">
+        {p.featured && <div class="badge-feat">★ destacado</div>}
+        <div class="project-num">{p.num}</div>
+        <div class="project-title">{p.title}</div>
+        <div class="proj-tags">
+          {p.tags.map(tag => <span class="proj-tag">{tag}</span>)}
+        </div>
+        <p class="project-desc">{p.desc}</p>
+        <div class="project-links">
+          {p.link && (
+            <a href={p.link} target="_blank" rel="noopener" class="project-link">
+              Ver en vivo
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="M2 8L8 2M8 2H3M8 2V7" stroke="currentColor" stroke-width="1.2"/>
+              </svg>
+            </a>
           )}
-          {link && (
-            <LinkButton href={link}>
-              <Link class="size-4" />
-              Preview
-            </LinkButton>
+          {p.github && (
+            <a href={p.github} target="_blank" rel="noopener" class="project-link">
+              GitHub
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="M2 8L8 2M8 2H3M8 2V7" stroke="currentColor" stroke-width="1.2"/>
+              </svg>
+            </a>
           )}
-        </footer>
+        </div>
+      </div>
+
+      <div class="project-visual">
+        {p.codeBlock ? (
+          <div class="agents-block">
+            <div class="agents-label">AGENTS · STATUS</div>
+            <div><span class="ag-ok">✓</span>&nbsp;dev_briefing&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ag-muted">operativo</span></div>
+            <div><span class="ag-ok">✓</span>&nbsp;news_intelligence&nbsp;<span class="ag-muted">operativo</span></div>
+            <div><span class="ag-ok">✓</span>&nbsp;blog_stibios&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ag-muted">operativo</span></div>
+            <div><span class="ag-ok">✓</span>&nbsp;blog_victoria&nbsp;&nbsp;&nbsp;&nbsp;<span class="ag-muted">operativo</span></div>
+            <div><span class="ag-ok">✓</span>&nbsp;lead_generation&nbsp;&nbsp;&nbsp;<span class="ag-muted">operativo</span></div>
+            <div class="agents-infra">infra: Hetzner · Docker · Redis · Supabase</div>
+          </div>
+        ) : p.image ? (
+          <div class="project-img-wrap">
+            <img class="project-img" src={p.image} alt={p.title} loading="lazy" />
+          </div>
+        ) : null}
+      </div>
     </div>
-  </div>
-</article>
-    ))
-  }
+  ))}
 </div>
 
+<style>
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    margin-top: 2rem;
+  }
 
+  .project-card {
+    background: var(--bg);
+    padding: 2.5rem;
+    display: flex; flex-direction: column; gap: 1.25rem;
+    position: relative; overflow: hidden;
+    transition: background .25s;
+    cursor: none;
+  }
+  .project-card.wide {
+    grid-column: 1 / -1;
+    flex-direction: row; gap: 3rem; align-items: flex-start;
+  }
+  .project-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--accent-lo), transparent);
+    opacity: 0; transition: opacity .35s; pointer-events: none;
+  }
+  .project-card:hover { background: var(--bg2); }
+  .project-card:hover::before { opacity: 1; }
 
+  .project-info  { flex: 1; min-width: 0; position: relative; z-index: 1; }
+  .project-visual { flex: 0 0 360px; position: relative; z-index: 1; }
+  .project-card:not(.wide) .project-visual { flex: none; width: 100%; }
+
+  .project-num   { font-family: 'JetBrains Mono', monospace; font-size: .65rem; color: var(--muted); letter-spacing: .15em; margin-bottom: .75rem; }
+  .project-title { font-size: 1.3rem; font-weight: 600; color: var(--white); letter-spacing: -.02em; margin-bottom: .75rem; line-height: 1.2; }
+  .project-card.wide .project-title { font-size: 1.6rem; }
+  .project-desc  { font-size: .82rem; line-height: 1.8; color: var(--muted2); margin-bottom: 1.25rem; }
+
+  .proj-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.25rem; }
+  .proj-tag  {
+    font-size: .65rem; padding: .2rem .6rem;
+    border-radius: 4px; border: 1px solid var(--border2);
+    color: var(--muted2); font-family: 'JetBrains Mono', monospace; transition: all .2s;
+  }
+  .project-card:hover .proj-tag { border-color: rgba(124,110,247,.25); }
+
+  .project-links { display: flex; gap: 1.25rem; }
+  .project-link  {
+    font-family: 'JetBrains Mono', monospace; font-size: .7rem; letter-spacing: .05em;
+    color: var(--muted2); text-decoration: none;
+    display: inline-flex; align-items: center; gap: .3rem;
+    transition: color .2s; padding-bottom: 1px; border-bottom: 1px solid transparent;
+  }
+  .project-link:hover { color: var(--accent); border-color: var(--accent); }
+
+  .project-img-wrap { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+  .project-img {
+    width: 100%; height: 220px; object-fit: cover; object-position: top; display: block;
+    filter: grayscale(10%); transition: filter .4s, transform .5s;
+  }
+  .project-card.wide .project-img { height: 260px; }
+  .project-card:hover .project-img { filter: grayscale(0%); transform: scale(1.03); }
+
+  .badge-feat {
+    display: inline-flex; align-items: center; gap: .4rem;
+    font-family: 'JetBrains Mono', monospace; font-size: .62rem; letter-spacing: .1em;
+    color: var(--accent); border: 1px solid rgba(124,110,247,.3);
+    border-radius: 4px; padding: .15rem .5rem; margin-bottom: .75rem;
+  }
+
+  /* Agents block */
+  .agents-block {
+    background: var(--bg2); border: 1px solid var(--border); border-radius: 8px;
+    padding: 1.5rem 1.75rem; height: 220px;
+    display: flex; flex-direction: column; justify-content: center;
+    font-family: 'JetBrains Mono', monospace; font-size: .68rem; line-height: 2; color: var(--muted2);
+  }
+  .agents-label { color: var(--accent); margin-bottom: .5rem; letter-spacing: .12em; font-size: .65rem; }
+  .ag-ok     { color: var(--green); }
+  .ag-muted  { color: var(--muted); }
+  .agents-infra {
+    border-top: 1px solid var(--border); margin-top: .75rem; padding-top: .75rem;
+    color: var(--muted); font-size: .62rem;
+  }
+
+  @media(max-width: 900px) {
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.wide { flex-direction: column; }
+    .project-visual { flex: none !important; width: 100% !important; }
+  }
+</style>

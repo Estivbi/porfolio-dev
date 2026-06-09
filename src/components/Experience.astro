@@ -1,42 +1,90 @@
 ---
-import ExperienceItem from "./ExperienceItem.astro"
-
 const EXPERIENCE = [
   {
-    date: "Presente",
-    title: "Desarrolladora Full Stack y sistemas",
-    company: "Indra",
-    description:
-      "Actualmente formo parte del equipo de desarrollo y monitorización, donde trabajo en la mejora y evolución del sistema interno de operaciones.\nParticipo en el desarrollo full stack, optimizando tanto el frontend (JavaScript) como el backend (PHP) y colaborando en la migración de bases de datos de MySQL a Oracle.\n\nAdemás, aplico buenas prácticas de arquitectura hexagonal, ejecuto tests automáticos antes de cada despliegue y trabajo en entornos DevOps, gestionando entornos de desarrollo, pruebas y producción.",
-    link: "#proyectos",
+    dateFrom: "2024",
+    dateTo:   "Ahora",
+    role:     "Desarrolladora Full Stack & Sistemas",
+    company:  "INDRA · Banca",
+    desc:     "Desarrollo y monitorización de sistemas internos de operaciones para un importante banco español. Evolución full stack, migración MySQL → Oracle, arquitectura hexagonal, DevOps en AWS y Linux. Tests automáticos en cada despliegue con Bhom y Helix.",
+    tags:     ["JavaScript", "PHP", "Oracle", "AWS", "DevOps", "Linux"],
   },
   {
-    date: "Presente",
-    title: "Co-fundadora y Desarrolladora Full Stack",
-    company: "Revista Victoria",
-    description:
-      "Diseño y desarrollo completo de la plataforma web para la revista de moda independiente 'Revista Victoria'. Desarrollo desde cero con enfoque visual atractivo, optimización para SEO y gestión de contenidos personalizada. Trabajo directamente con el cliente para definir funcionalidades y mantener la escalabilidad del sitio.",
-    link: "https://www.victoriarevista.com/",
+    dateFrom: "2023",
+    dateTo:   "Ahora",
+    role:     "Co-fundadora · Fullstack Dev",
+    company:  "REVISTA VICTORIA",
+    desc:     "Diseño y desarrollo completo de plataforma editorial independiente. SEO-first, gestión de contenidos con Sanity CMS, rutas dinámicas y arquitectura escalable desde cero.",
+    tags:     ["Astro", "React", "Sanity", "SEO"],
+    link:     "https://www.victoriarevista.com/",
   },
   {
-    date: "Desde 2023 - presente",
-    title: "Desarrolladora Full Stack",
-    company: "Me Asesoran Rentas",
-    description:
-      "Desarrollo y mantenimiento de la aplicación Me Asesoran Rentas, actualmente en producción y en uso por miles de usuarios. Desarrollo de funcionalidades tanto en backend como en frontend. He desarrollado la creación del panel exclusivo para asesores fiscales.\n\n" +
-      "Colaboración directa con el equipo de producto para entender las necesidades de los usuarios y traducirlas en soluciones técnicas.\n" +
-      "Desarrollo completo del producto Me Asesoran Rentas, incluyendo integración con APIs de la Agencia Tributaria, sistema de autenticación oficial y validación de declaraciones.",
-    link: "https://rentas.measesoran.eu",
+    dateFrom: "2023",
+    dateTo:   "Ahora",
+    role:     "Desarrolladora Full Stack",
+    company:  "ME ASESORAN RENTAS",
+    desc:     "Aplicación en producción usada por miles de usuarios. Integración con APIs oficiales de la Agencia Tributaria, autenticación oficial y panel exclusivo para asesores fiscales. Fullstack completo de producto.",
+    tags:     ["Next.js", "React Native", "Tailwind", "API AEAT"],
+    link:     "https://rentas.measesoran.eu",
   },
 ]
 ---
 
-<ol class="relative mt-16">
-  {
-    EXPERIENCE.map((experience) => (
-      <li class="">
-        <ExperienceItem {...experience} />
-      </li>
-    ))
+<div class="exp-list">
+  {EXPERIENCE.map((exp, i) => (
+    <div class={`exp-item r-left d${i + 1}`}>
+      <div class="exp-date">{exp.dateFrom}<br/>→ {exp.dateTo}</div>
+      <div>
+        <div class="exp-role">{exp.role}</div>
+        <div class="exp-company">{exp.company}</div>
+        <p class="exp-desc">{exp.desc}</p>
+        <div class="exp-tags">
+          {exp.tags.map(tag => <span class="exp-tag">{tag}</span>)}
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+<style>
+  .exp-list { display: flex; flex-direction: column; }
+
+  .exp-item {
+    display: grid; grid-template-columns: 160px 1fr;
+    gap: 3rem; padding: 2rem 0;
+    border-top: 1px solid var(--border);
+    position: relative; transition: background .2s, padding .2s;
   }
-</ol>
+  .exp-item:last-child { border-bottom: 1px solid var(--border); }
+  .exp-item::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 2px; background: var(--accent);
+    transform: scaleY(0); transform-origin: top;
+    transition: transform .35s cubic-bezier(.4,0,.2,1);
+  }
+  .exp-item:hover::before { transform: scaleY(1); }
+  .exp-item:hover {
+    background: linear-gradient(90deg, var(--accent-lo), transparent);
+    padding-left: 1rem;
+  }
+
+  .exp-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .68rem; color: var(--muted); letter-spacing: .05em;
+    padding-top: .2rem; line-height: 1.6;
+  }
+  .exp-role    { font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: .2rem; letter-spacing: -.01em; }
+  .exp-company { font-family: 'JetBrains Mono', monospace; font-size: .72rem; color: var(--accent); letter-spacing: .08em; margin-bottom: .9rem; }
+  .exp-desc    { font-size: .82rem; line-height: 1.8; color: var(--muted2); }
+
+  .exp-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .9rem; }
+  .exp-tag  {
+    font-size: .65rem; padding: .2rem .55rem;
+    border: 1px solid var(--border2); color: var(--muted);
+    border-radius: 4px; font-family: 'JetBrains Mono', monospace;
+  }
+
+  @media(max-width: 900px) {
+    .exp-item { grid-template-columns: 1fr; gap: .5rem; }
+    .exp-date  { display: none; }
+  }
+</style>
