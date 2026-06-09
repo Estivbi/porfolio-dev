@@ -110,8 +110,15 @@
   .code-bool { color: var(--green); }
 
   @media(max-width: 900px) {
-    .hero { grid-template-columns: 1fr; padding: 0 1.25rem; padding-top: 56px; }
-    .hero-right { display: none; }
-    .hero-meta  { left: 1.25rem; }
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 0 1.25rem 2rem;
+      padding-top: 56px;
+      min-height: auto;
+    }
+    .hero-right  { display: none; }
+    .hero-eyebrow { margin-bottom: 1.25rem; }
+    .hero-h1     { margin-bottom: 1rem; }
+    .hero-sub    { margin-bottom: 1.5rem; font-size: .95rem; }
   }
 </style>
