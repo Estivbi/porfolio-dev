@@ -114,18 +114,28 @@ const PROJECTS: Project[] = [
   .projects-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
+    gap: 1rem;
     margin-top: 2rem;
   }
 
   .project-card {
-    background: var(--bg);
+    background: var(--bg2);
     padding: 2.5rem;
     display: flex; flex-direction: column; gap: 1.25rem;
     position: relative; overflow: hidden;
-    transition: background .25s;
+    border-radius: 20px;
+    transition: background .25s, box-shadow .25s;
     cursor: none;
+  }
+  /* gradient border via mask trick */
+  .project-card::after {
+    content: ''; position: absolute; inset: 0;
+    border-radius: 20px; padding: 1px; pointer-events: none;
+    background: linear-gradient(135deg, rgba(124,110,247,.25), rgba(255,255,255,.05) 50%, rgba(124,110,247,.1));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    transition: opacity .3s;
   }
   .project-card.wide {
     grid-column: 1 / -1;
@@ -136,8 +146,11 @@ const PROJECTS: Project[] = [
     background: linear-gradient(135deg, var(--accent-lo), transparent);
     opacity: 0; transition: opacity .35s; pointer-events: none;
   }
-  .project-card:hover { background: var(--bg2); }
+  .project-card:hover { background: var(--bg3); box-shadow: 0 8px 32px rgba(0,0,0,.4); }
   .project-card:hover::before { opacity: 1; }
+  .project-card:hover::after {
+    background: linear-gradient(135deg, rgba(124,110,247,.5), rgba(255,255,255,.08) 50%, rgba(124,110,247,.2));
+  }
 
   .project-info  { flex: 1; min-width: 0; position: relative; z-index: 1; }
   .project-visual { flex: 0 0 360px; position: relative; z-index: 1; }
@@ -151,7 +164,7 @@ const PROJECTS: Project[] = [
   .proj-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.25rem; }
   .proj-tag  {
     font-size: .65rem; padding: .2rem .6rem;
-    border-radius: 4px; border: 1px solid var(--border2);
+    border-radius: 8px; border: 1px solid var(--border2);
     color: var(--muted2); font-family: 'JetBrains Mono', monospace; transition: all .2s;
   }
   .project-card:hover .proj-tag { border-color: rgba(124,110,247,.25); }
@@ -165,7 +178,7 @@ const PROJECTS: Project[] = [
   }
   .project-link:hover { color: var(--accent); border-color: var(--accent); }
 
-  .project-img-wrap { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+  .project-img-wrap { border-radius: 14px; overflow: hidden; border: 1px solid var(--border); }
   .project-img {
     width: 100%; height: 220px; object-fit: cover; object-position: top; display: block;
     filter: grayscale(10%); transition: filter .4s, transform .5s;
@@ -177,12 +190,12 @@ const PROJECTS: Project[] = [
     display: inline-flex; align-items: center; gap: .4rem;
     font-family: 'JetBrains Mono', monospace; font-size: .62rem; letter-spacing: .1em;
     color: var(--accent); border: 1px solid rgba(124,110,247,.3);
-    border-radius: 4px; padding: .15rem .5rem; margin-bottom: .75rem;
+    border-radius: 8px; padding: .15rem .5rem; margin-bottom: .75rem;
   }
 
   /* Agents block */
   .agents-block {
-    background: var(--bg2); border: 1px solid var(--border); border-radius: 8px;
+    background: var(--bg); border: 1px solid var(--border); border-radius: 14px;
     padding: 1.5rem 1.75rem; height: 220px;
     display: flex; flex-direction: column; justify-content: center;
     font-family: 'JetBrains Mono', monospace; font-size: .68rem; line-height: 2; color: var(--muted2);
@@ -196,8 +209,9 @@ const PROJECTS: Project[] = [
   }
 
   @media(max-width: 900px) {
-    .projects-grid  { grid-template-columns: 1fr; margin-top: .75rem; }
-    .project-card   { padding: 1.5rem; }
+    .projects-grid  { grid-template-columns: 1fr; margin-top: .75rem; gap: .75rem; }
+    .project-card   { padding: 1.5rem; border-radius: 16px; }
+    .project-card::after { border-radius: 16px; }
     .project-card.wide { flex-direction: column; }
     .project-visual { flex: none !important; width: 100% !important; }
   }
