@@ -61,32 +61,48 @@
   .hero-bg {
     position: absolute; inset: 0; overflow: hidden;
     pointer-events: none; z-index: 0;
-    opacity: 0; animation: meshfade 1.2s 1s forwards;
-    background-color: transparent;
+    opacity: 0; animation: meshfade 1.4s 0.8s forwards;
+  }
+
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    inset: -20px;
     background-image:
-      radial-gradient(at 15% 25%, rgba(124,110,247,.55) 0px, transparent 55%),
-      radial-gradient(at 80% 10%, rgba(192,38,211,.35) 0px, transparent 50%),
-      radial-gradient(at 5%  80%, rgba(79,70,229,.45)  0px, transparent 50%),
-      radial-gradient(at 85% 75%, rgba(37,99,235,.30)  0px, transparent 50%),
-      radial-gradient(at 50% 50%, rgba(124,110,247,.15) 0px, transparent 60%);
-    background-size: 200% 200%;
-    animation: meshfade 1.2s 1s forwards, meshflow 18s 2s ease-in-out infinite alternate;
+      radial-gradient(72% 58% at 16% 82%, #06b6d4bb 0%, #06b6d455 22%, #06b6d400 72%),
+      radial-gradient(68% 52% at 82% 14%, #3b82f6aa 0%, #3b82f640 22%, #3b82f600 72%),
+      radial-gradient(60% 50% at 8%  18%, #0ea5e988 0%, #0ea5e930 22%, #0ea5e900 72%),
+      radial-gradient(55% 48% at 90% 78%, #4f46e577 0%, #4f46e528 22%, #4f46e500 72%),
+      radial-gradient(50% 44% at 50% 48%, #2563eb44 0%, #2563eb18 22%, #2563eb00 72%),
+      radial-gradient(42% 38% at 68% 55%, #7c6ef733 0%, #7c6ef712 22%, #7c6ef700 72%);
+    filter: blur(8px);
+    animation: meshdrift 20s 2.2s ease-in-out infinite alternate;
+  }
+
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4t5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c8TV1mAAAAG3RSTlNAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAvEOwtAAAAWklEQVR42u3BMQEAAADCoPVP7WsIoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeAMBxAABHgAAAABJRU5ErkJggg==");
+    mix-blend-mode: overlay;
+    opacity: 0.035;
   }
 
   @keyframes meshfade {
     from { opacity: 0; }
     to   { opacity: 1; }
   }
-  @keyframes meshflow {
-    0%   { background-position: 0% 0%; }
-    25%  { background-position: 30% 20%; }
-    50%  { background-position: 60% 40%; }
-    75%  { background-position: 20% 70%; }
-    100% { background-position: 50% 30%; }
+  @keyframes meshdrift {
+    0%   { transform: translate(0%,    0%)   scale(1); }
+    25%  { transform: translate(2.5%,  -3%)  scale(1.04); }
+    50%  { transform: translate(-3%,   2%)   scale(1.02); }
+    75%  { transform: translate(1.5%,  3.5%) scale(1.05); }
+    100% { transform: translate(-2%,  -1.5%) scale(1.03); }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero-bg { animation: meshfade 1.2s 1s forwards; }
+    .hero-bg { animation: meshfade 1.4s 0.8s forwards; }
+    .hero-bg::before { animation: none; }
   }
 
   .hero-code {
