@@ -119,38 +119,34 @@ const PROJECTS: Project[] = [
   }
 
   .project-card {
-    background: var(--bg2);
     padding: 2.5rem;
     display: flex; flex-direction: column; gap: 1.25rem;
-    position: relative; overflow: hidden;
+    position: relative;
     border-radius: 20px;
-    transition: background .25s, box-shadow .25s;
+    border: 1px solid transparent;
+    /* background-clip trick: card fill on padding-box, gradient border on border-box */
+    background:
+      linear-gradient(var(--bg2), var(--bg2)) padding-box,
+      linear-gradient(135deg, rgba(124,110,247,.5) 0%, rgba(192,38,211,.3) 50%, rgba(6,182,212,.2) 100%) border-box;
+    transition: box-shadow .25s, background .25s;
     cursor: none;
-  }
-  /* gradient border via mask trick */
-  .project-card::after {
-    content: ''; position: absolute; inset: 0;
-    border-radius: 20px; padding: 1px; pointer-events: none;
-    background: linear-gradient(135deg, rgba(124,110,247,.3) 0%, rgba(192,38,211,.15) 40%, rgba(6,182,212,.1) 100%);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    transition: opacity .3s;
   }
   .project-card.wide {
     grid-column: 1 / -1;
     flex-direction: row; gap: 3rem; align-items: flex-start;
   }
   .project-card::before {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(135deg, var(--accent-lo), transparent);
+    content: ''; position: absolute; inset: 0; border-radius: 20px;
+    background: linear-gradient(135deg, rgba(124,110,247,.06), transparent);
     opacity: 0; transition: opacity .35s; pointer-events: none;
   }
-  .project-card:hover { background: var(--bg3); box-shadow: 0 8px 32px rgba(0,0,0,.4); }
-  .project-card:hover::before { opacity: 1; }
-  .project-card:hover::after {
-    background: linear-gradient(135deg, rgba(124,110,247,.55) 0%, rgba(192,38,211,.3) 40%, rgba(6,182,212,.2) 100%);
+  .project-card:hover {
+    box-shadow: 0 8px 40px rgba(124,110,247,.15), 0 2px 16px rgba(0,0,0,.5);
+    background:
+      linear-gradient(var(--bg3), var(--bg3)) padding-box,
+      linear-gradient(135deg, rgba(124,110,247,.8) 0%, rgba(192,38,211,.5) 50%, rgba(6,182,212,.3) 100%) border-box;
   }
+  .project-card:hover::before { opacity: 1; }
 
   .project-info  { flex: 1; min-width: 0; position: relative; z-index: 1; }
   .project-visual { flex: 0 0 360px; position: relative; z-index: 1; }
@@ -211,7 +207,6 @@ const PROJECTS: Project[] = [
   @media(max-width: 900px) {
     .projects-grid  { grid-template-columns: 1fr; margin-top: .75rem; gap: .75rem; }
     .project-card   { padding: 1.5rem; border-radius: 16px; }
-    .project-card::after { border-radius: 16px; }
     .project-card.wide { flex-direction: column; }
     .project-visual { flex: none !important; width: 100% !important; }
   }
