@@ -2,12 +2,8 @@
 ---
 
 <section class="hero">
-  <!-- animated background blobs -->
-  <div class="hero-bg" aria-hidden="true">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-  </div>
+  <!-- mesh gradient background -->
+  <div class="hero-bg" aria-hidden="true"></div>
   <div class="hero-left">
     <div class="hero-eyebrow">
       <div class="live-dot"></div>
@@ -61,59 +57,36 @@
   .hero-left  { display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 1; }
   .hero-right { display: flex; align-items: center; justify-content: flex-end; position: relative; z-index: 1; }
 
-  /* ANIMATED BLOBS */
+  /* MESH GRADIENT */
   .hero-bg {
     position: absolute; inset: 0; overflow: hidden;
     pointer-events: none; z-index: 0;
-  }
-  .blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0;
-    animation: blobfade .8s 1.3s forwards;
-  }
-  .blob-1 {
-    width: 600px; height: 500px;
-    top: -10%; left: -5%;
-    background: radial-gradient(circle, rgba(124,110,247,.18) 0%, transparent 70%);
-    animation: blobfade .8s 1.3s forwards, blob1move 12s 2s ease-in-out infinite alternate;
-  }
-  .blob-2 {
-    width: 500px; height: 450px;
-    top: 20%; right: 5%;
-    background: radial-gradient(circle, rgba(192,38,211,.12) 0%, transparent 70%);
-    animation: blobfade .8s 1.5s forwards, blob2move 15s 2s ease-in-out infinite alternate;
-  }
-  .blob-3 {
-    width: 400px; height: 350px;
-    bottom: 0%; left: 30%;
-    background: radial-gradient(circle, rgba(79,70,229,.14) 0%, transparent 70%);
-    animation: blobfade .8s 1.7s forwards, blob3move 18s 2s ease-in-out infinite alternate;
+    opacity: 0; animation: meshfade 1.2s 1s forwards;
+    background-color: transparent;
+    background-image:
+      radial-gradient(at 15% 25%, rgba(124,110,247,.55) 0px, transparent 55%),
+      radial-gradient(at 80% 10%, rgba(192,38,211,.35) 0px, transparent 50%),
+      radial-gradient(at 5%  80%, rgba(79,70,229,.45)  0px, transparent 50%),
+      radial-gradient(at 85% 75%, rgba(37,99,235,.30)  0px, transparent 50%),
+      radial-gradient(at 50% 50%, rgba(124,110,247,.15) 0px, transparent 60%);
+    background-size: 200% 200%;
+    animation: meshfade 1.2s 1s forwards, meshflow 18s 2s ease-in-out infinite alternate;
   }
 
-  @keyframes blobfade { to { opacity: 1; } }
-  @keyframes blob1move {
-    0%   { transform: translate(0, 0) scale(1); }
-    33%  { transform: translate(40px, 30px) scale(1.05); }
-    66%  { transform: translate(-20px, 50px) scale(.97); }
-    100% { transform: translate(30px, -20px) scale(1.03); }
+  @keyframes meshfade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
   }
-  @keyframes blob2move {
-    0%   { transform: translate(0, 0) scale(1); }
-    33%  { transform: translate(-50px, 20px) scale(1.08); }
-    66%  { transform: translate(30px, -40px) scale(.95); }
-    100% { transform: translate(-20px, 30px) scale(1.04); }
-  }
-  @keyframes blob3move {
-    0%   { transform: translate(0, 0) scale(1); }
-    33%  { transform: translate(30px, -30px) scale(1.06); }
-    66%  { transform: translate(-40px, 20px) scale(.98); }
-    100% { transform: translate(20px, 40px) scale(1.02); }
+  @keyframes meshflow {
+    0%   { background-position: 0% 0%; }
+    25%  { background-position: 30% 20%; }
+    50%  { background-position: 60% 40%; }
+    75%  { background-position: 20% 70%; }
+    100% { background-position: 50% 30%; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .blob { animation: blobfade .8s 1.3s forwards; }
+    .hero-bg { animation: meshfade 1.2s 1s forwards; }
   }
 
   .hero-code {
