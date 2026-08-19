@@ -62,6 +62,9 @@
     position: absolute; inset: 0; overflow: hidden;
     pointer-events: none; z-index: 0;
     opacity: 0; animation: meshfade 1.4s 0.8s forwards;
+    /* fade to page background at the bottom */
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 100%);
   }
 
   .hero-bg::before {
