@@ -131,7 +131,7 @@ const PROJECTS: Project[] = [
   .project-card::after {
     content: ''; position: absolute; inset: 0;
     border-radius: 20px; padding: 1px; pointer-events: none;
-    background: linear-gradient(135deg, rgba(124,110,247,.25), rgba(255,255,255,.05) 50%, rgba(124,110,247,.1));
+    background: linear-gradient(135deg, rgba(124,110,247,.3) 0%, rgba(192,38,211,.15) 40%, rgba(6,182,212,.1) 100%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -149,7 +149,7 @@ const PROJECTS: Project[] = [
   .project-card:hover { background: var(--bg3); box-shadow: 0 8px 32px rgba(0,0,0,.4); }
   .project-card:hover::before { opacity: 1; }
   .project-card:hover::after {
-    background: linear-gradient(135deg, rgba(124,110,247,.5), rgba(255,255,255,.08) 50%, rgba(124,110,247,.2));
+    background: linear-gradient(135deg, rgba(124,110,247,.55) 0%, rgba(192,38,211,.3) 40%, rgba(6,182,212,.2) 100%);
   }
 
   .project-info  { flex: 1; min-width: 0; position: relative; z-index: 1; }
