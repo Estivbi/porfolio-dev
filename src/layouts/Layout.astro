@@ -22,27 +22,22 @@ const { description, title } = Astro.props
   </head>
 
   <body>
-    <div class="cur" id="cur-dot"></div>
-    <div class="cur" id="cur-ring"></div>
-    <div class="noise"></div>
-    <div class="glow-hero"></div>
-
     <slot />
 
     <style is:global>
       :root {
-        --bg:        #0a0a0b;
-        --bg2:       #111114;
-        --bg3:       #18181c;
-        --border:    rgba(255,255,255,0.06);
-        --border2:   rgba(255,255,255,0.10);
-        --text:      #e2e2e5;
-        --muted:     #5c5c6e;
-        --muted2:    #8888a0;
-        --accent:    #7c6ef7;
-        --accent-lo: rgba(124,110,247,0.08);
-        --white:     #ffffff;
-        --green:     #4ade80;
+        --bg:        #0c0d0f;
+        --bg2:       #111316;
+        --bg3:       #16191d;
+        --border:    rgba(255,255,255,0.08);
+        --border2:   rgba(255,255,255,0.14);
+        --text:      #d9dce1;
+        --muted:     #6b717c;
+        --muted2:    #9097a3;
+        --accent:    #3fb6a8;
+        --accent-lo: rgba(63,182,168,0.08);
+        --white:     #f4f5f7;
+        --green:     #3fb6a8;
       }
 
       *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -53,27 +48,6 @@ const { description, title } = Astro.props
         font-family: 'Geist', 'Inter', sans-serif;
         overflow-x: hidden;
         -webkit-font-smoothing: antialiased;
-      }
-
-      /* CURSOR */
-      .cur { position: fixed; pointer-events: none; z-index: 9999; }
-      #cur-dot  { width: 5px; height: 5px; background: var(--white); border-radius: 50%; transform: translate(-50%,-50%); transition: transform .15s; }
-      #cur-ring { width: 32px; height: 32px; border: 1px solid rgba(124,110,247,.5); border-radius: 50%; transform: translate(-50%,-50%); transition: transform .15s ease, opacity .2s; }
-
-      /* NOISE */
-      .noise {
-        position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: .018;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      }
-
-      /* GLOW */
-      .glow-hero {
-        position: fixed; top: -20%; left: 50%; transform: translateX(-50%);
-        width: 1000px; height: 700px; pointer-events: none; z-index: 0;
-        background:
-          radial-gradient(ellipse 60% 50% at 40% 50%, rgba(124,110,247,.13) 0%, transparent 70%),
-          radial-gradient(ellipse 50% 40% at 65% 40%, rgba(192,38,211,.08) 0%, transparent 65%),
-          radial-gradient(ellipse 40% 35% at 50% 70%, rgba(79,70,229,.10) 0%, transparent 60%);
       }
 
       /* DIVIDER */
@@ -100,32 +74,6 @@ const { description, title } = Astro.props
     </style>
 
     <script>
-      // Cursor
-      const dot  = document.getElementById('cur-dot')!
-      const ring = document.getElementById('cur-ring')!
-      let mx = 0, my = 0, rx = 0, ry = 0
-      document.addEventListener('mousemove', e => {
-        mx = e.clientX; my = e.clientY
-        dot.style.left = mx + 'px'; dot.style.top = my + 'px'
-      })
-      ;(function a() {
-        rx += (mx - rx) * .13; ry += (my - ry) * .13
-        ring.style.left = rx + 'px'; ring.style.top = ry + 'px'
-        requestAnimationFrame(a)
-      })()
-      document.querySelectorAll('a,button').forEach(el => {
-        el.addEventListener('mouseenter', () => {
-          ring.style.transform = 'translate(-50%,-50%) scale(2)'
-          ring.style.opacity = '.8'
-          dot.style.transform = 'translate(-50%,-50%) scale(0)'
-        })
-        el.addEventListener('mouseleave', () => {
-          ring.style.transform = 'translate(-50%,-50%) scale(1)'
-          ring.style.opacity = '1'
-          dot.style.transform = 'translate(-50%,-50%) scale(1)'
-        })
-      })
-
       // Scroll reveal
       const io = new IntersectionObserver(entries => {
         entries.forEach(e => {

@@ -7,6 +7,13 @@ import Projects  from "@/components/Projects.astro"
 import AboutMe  from "@/components/AboutMe.astro"
 import Footer   from "@/components/Footer.astro"
 
+const SERVICES = [
+  { n: "01", title: "Agentes y automatización con IA", problem: "Procesos manuales y repetitivos que consumen horas del equipo.", what: "Agentes LLM con LangGraph, pipelines de contenido y alertas, con observabilidad y reintentos para que corran 24/7." },
+  { n: "02", title: "Backend y APIs", problem: "Sistemas lentos, legacy o difíciles de integrar.", what: "APIs REST documentadas, refactor a MVC / arquitectura hexagonal, optimización SQL e integraciones oficiales." },
+  { n: "03", title: "Frontend y producto", problem: "Interfaces anticuadas que frenan a los usuarios.", what: "Modernización de UI con React, Next.js y Astro, del diseño en Figma al producto en producción." },
+  { n: "04", title: "Despliegue y DevOps", problem: "Código que funciona en local pero no llega a producción.", what: "Docker, CI/CD con GitHub Actions, AWS y Linux, con tests automáticos antes de cada despliegue." },
+]
+
 const STACK = [
   "Next.js","React","Astro","TypeScript","Python","FastAPI",
   "LangGraph","LLMs","Agentes IA","Celery","Redis","PostgreSQL","Supabase",
@@ -24,11 +31,27 @@ const STACK = [
   <main style="position:relative;z-index:2;">
     <Hero />
 
+    <!-- WHAT I SOLVE -->
+    <section class="section" id="servicios">
+      <div class="section-label r">01 — qué resuelvo</div>
+      <h2 class="section-title r-clip d1">Problemas reales,<br/><span class="dim">resueltos de extremo a extremo.</span></h2>
+      <div class="svc-grid">
+        {SERVICES.map((sv, i) => (
+          <div class={`svc r d${i + 1}`}>
+            <div class="svc-n">{sv.n}</div>
+            <h3 class="svc-t">{sv.title}</h3>
+            <p class="svc-p"><span>Problema</span>{sv.problem}</p>
+            <p class="svc-p"><span>Solución</span>{sv.what}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
     <div class="divider"></div>
 
     <!-- EXPERIENCE -->
     <section class="section" id="experiencia">
-      <div class="section-label r">01 — experiencia</div>
+      <div class="section-label r">02 — experiencia</div>
       <h2 class="section-title r-clip d1">Lo que he<br/><span class="dim">construido.</span></h2>
       <Experience />
     </section>
@@ -37,7 +60,7 @@ const STACK = [
 
     <!-- PROJECTS -->
     <section class="section" id="proyectos">
-      <div class="section-label r">02 — proyectos</div>
+      <div class="section-label r">03 — proyectos</div>
       <h2 class="section-title r-clip d1">Producción,<br/><span class="dim">no demos.</span></h2>
       <Projects />
     </section>
@@ -54,7 +77,7 @@ const STACK = [
 
     <!-- ABOUT -->
     <section class="section" id="sobre-mi">
-      <div class="section-label r">03 — sobre mí</div>
+      <div class="section-label r">04 — sobre mí</div>
       <h2 class="section-title r-clip d1">Builder.<br/><span class="dim">Por vocación.</span></h2>
       <AboutMe />
     </section>
@@ -63,7 +86,8 @@ const STACK = [
 
     <!-- CONTACT -->
     <div class="contact-section" id="contacto">
-      <h2 class="contact-h r">Construyamos<br/><span class="dim">algo juntos.</span></h2>
+      <h2 class="contact-h r">¿Tienes un proyecto<br/><span class="dim">con IA en mente?</span></h2>
+      <p class="contact-sub r d1">Cuéntame qué quieres resolver. Respondo en menos de 48 h.</p>
       <div class="contact-row">
         <a href="mailto:carolinarb1994@gmail.com" class="btn-email r d1">
           carolinarb1994@gmail.com →
@@ -100,6 +124,15 @@ const STACK = [
   }
   .section-title .dim { color: var(--muted); font-weight: 300; }
 
+  /* SERVICES */
+  .svc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
+  .svc { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.75rem; }
+  .svc-n { font-family: 'JetBrains Mono', monospace; font-size: .65rem; color: var(--accent); letter-spacing: .15em; margin-bottom: .75rem; }
+  .svc-t { font-size: 1.1rem; font-weight: 600; color: var(--white); letter-spacing: -.01em; margin-bottom: 1rem; }
+  .svc-p { font-size: .82rem; line-height: 1.7; color: var(--muted2); margin-bottom: .6rem; }
+  .svc-p span { display: block; font-family: 'JetBrains Mono', monospace; font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: .15rem; }
+  .contact-sub { font-size: 1rem; color: var(--muted2); margin: -1.5rem 0 2rem; }
+
   /* STACK */
   .stack-wrap { padding: 2rem 5vw 3rem; max-width: 1400px; margin: 0 auto; }
   .stack-grid { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; }
@@ -107,7 +140,7 @@ const STACK = [
     font-family: 'JetBrains Mono', monospace;
     font-size: .68rem; letter-spacing: .06em;
     padding: .35rem .8rem; border: 1px solid var(--border);
-    color: var(--muted2); border-radius: 10px; transition: all .2s;
+    color: var(--muted2); border-radius: 6px; transition: all .2s;
   }
   .stack-chip:hover { border-color: var(--accent); color: var(--text); background: var(--accent-lo); }
 
@@ -128,9 +161,9 @@ const STACK = [
     display: inline-flex; align-items: center;
     font-size: .85rem; font-weight: 500; text-decoration: none;
     background: var(--accent); color: var(--white);
-    border-radius: 8px; padding: .7rem 1.5rem; transition: all .2s; cursor: none;
+    border-radius: 8px; padding: .7rem 1.5rem; transition: all .2s; 
   }
-  .btn-email:hover { background: #8f84f9; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(124,110,247,.3); }
+  .btn-email:hover { background: #52c7b9; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(63,182,168,.3); }
 
   .contact-links { display: flex; flex-direction: column; gap: .75rem; }
   .contact-link {
@@ -145,6 +178,8 @@ const STACK = [
     .section         { padding: 1.25rem 1.25rem; }
     .section-label   { margin-bottom: .4rem; }
     .section-title   { font-size: clamp(1.6rem, 7vw, 2.2rem); margin-bottom: .75rem; }
+    .svc-grid        { grid-template-columns: 1fr; margin-top: .75rem; gap: .75rem; }
+    .contact-sub     { margin: -.75rem 0 1.25rem; }
     .stack-wrap      { padding: 1rem 1.25rem 1.5rem; }
     .stack-grid      { margin-top: .75rem; }
     .contact-section { padding: 1.75rem 1.25rem 2.5rem; }
