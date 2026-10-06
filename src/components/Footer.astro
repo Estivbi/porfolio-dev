@@ -3,25 +3,14 @@ const year = new Date().getFullYear()
 ---
 
 <footer>
-  <p>© {year} Carolina Rodríguez · <a href="https://stibios.com" target="_blank" rel="noopener">Stibios Labs</a></p>
-  <p>Madrid, España</p>
+  <div class="wrap row">
+    <p>© {year} Carolina Rodríguez. Madrid.</p>
+    <p>Mis propios productos viven en <a href="https://stibios.com" target="_blank" rel="noopener">Stibios</a>.</p>
+  </div>
 </footer>
 
 <style>
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 1.25rem 5vw;
-    display: flex; justify-content: space-between; align-items: center;
-    position: relative; z-index: 2;
-  }
-  footer p {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: .65rem; letter-spacing: .08em; color: var(--muted);
-  }
-  footer a { color: var(--muted2); text-decoration: none; transition: color .2s; }
-  footer a:hover { color: var(--accent); }
-
-  @media(max-width: 900px) {
-    footer { padding: 1.25rem; flex-direction: column; gap: .5rem; text-align: center; }
-  }
+  footer { border-top: 1px solid var(--line); padding: 1.5rem 0; font-size: .85rem; color: var(--muted); }
+  .row { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  a { color: var(--ink); text-underline-offset: 3px; }
 </style>

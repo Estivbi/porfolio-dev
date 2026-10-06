@@ -18,7 +18,7 @@ const { description, title } = Astro.props
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   </head>
 
   <body>
@@ -26,61 +26,46 @@ const { description, title } = Astro.props
 
     <style is:global>
       :root {
-        --bg:        #0c0d0f;
-        --bg2:       #111316;
-        --bg3:       #16191d;
-        --border:    rgba(255,255,255,0.08);
-        --border2:   rgba(255,255,255,0.14);
-        --text:      #d9dce1;
-        --muted:     #6b717c;
-        --muted2:    #9097a3;
-        --accent:    #3fb6a8;
-        --accent-lo: rgba(63,182,168,0.08);
-        --white:     #f4f5f7;
-        --green:     #3fb6a8;
+        --bg:      #eceee9;
+        --panel:   #f6f7f3;
+        --ink:     #12161c;
+        --muted:   #586170;
+        --line:    #c8cdc6;
+        --accent:  #2540f5;
+        --accent-soft: #dfe3ff;
+        --display: 'Bricolage Grotesque', 'Instrument Sans', sans-serif;
+        --body:    'Instrument Sans', system-ui, sans-serif;
+        --mono:    'IBM Plex Mono', ui-monospace, monospace;
+        --gutter:  clamp(1.25rem, 5vw, 4rem);
       }
 
       *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
       html { scroll-behavior: smooth; font-size: 16px; }
       body {
         background: var(--bg);
-        color: var(--text);
-        font-family: 'Geist', 'Inter', sans-serif;
-        overflow-x: hidden;
+        color: var(--ink);
+        font-family: var(--body);
+        line-height: 1.6;
         -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
       }
+      a { color: inherit; }
+      :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+      ::selection { background: var(--accent); color: #fff; }
 
-      /* DIVIDER */
-      .divider { height: 1px; background: var(--border); margin: 0 5vw; }
+      .wrap { max-width: 1240px; margin: 0 auto; padding: 0 var(--gutter); }
+      .block { padding: clamp(3.5rem, 8vw, 6.5rem) 0; border-top: 1px solid var(--line); }
+      .h2 {
+        font-family: var(--display);
+        font-size: clamp(1.9rem, 4vw, 3rem);
+        font-weight: 600; line-height: 1.08; letter-spacing: -.025em;
+        max-width: 18ch; margin-bottom: clamp(1.75rem, 4vw, 3rem);
+      }
+      .lead { max-width: 62ch; color: var(--muted); font-size: 1.05rem; }
 
-      /* SCROLL REVEAL */
-      .r       { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.4,0,.2,1), transform .7s cubic-bezier(.4,0,.2,1); }
-      .r.in    { opacity: 1; transform: none; }
-      .r-clip  { clip-path: inset(0 0 100% 0); transition: clip-path .85s cubic-bezier(.77,0,.175,1); }
-      .r-clip.in { clip-path: inset(0 0 0% 0); }
-      .r-left  { opacity: 0; transform: translateX(-28px); transition: opacity .65s ease, transform .65s ease; }
-      .r-left.in { opacity: 1; transform: none; }
-      .d1 { transition-delay: .07s }
-      .d2 { transition-delay: .14s }
-      .d3 { transition-delay: .21s }
-      .d4 { transition-delay: .28s }
-      .d5 { transition-delay: .35s }
-
-      @keyframes up { to { opacity: 1; transform: translateY(0); } }
-      @keyframes livepulse {
-        0%,100% { box-shadow: 0 0 0 0 rgba(74,222,128,.4) }
-        50%      { box-shadow: 0 0 0 5px rgba(74,222,128,0) }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
       }
     </style>
-
-    <script>
-      // Scroll reveal
-      const io = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) }
-        })
-      }, { threshold: .08, rootMargin: '0px 0px -30px 0px' })
-      document.querySelectorAll('.r,.r-clip,.r-left').forEach(el => io.observe(el))
-    </script>
   </body>
 </html>

@@ -1,62 +1,16 @@
----
----
-
-<div class="about-grid">
-  <div>
-    <blockquote class="about-quote r d2">
-      "Los videojuegos y los ordenadores encendieron algo que ya no se apaga."
-    </blockquote>
-    <div class="about-body r d3">
-      <p>Soy <strong>Carolina Rodríguez</strong>, desarrolladora full stack de Madrid con foco en <strong>ingeniería de IA</strong>. Me interesa el ciclo completo: del backend al frontend y de ahí al despliegue y <strong>DevOps</strong>, pasando por agentes, pipelines y sistemas LLM que funcionan en producción.</p>
-      <p>Empecé de forma autodidacta y me formé en el <strong>Grado Superior en DAM</strong> (U-tad) y un bootcamp de Python. Hoy lidero el frontend de un DMS con 25 años de historia en CSS, y antes pasé por banca en Indra y por productos fiscales en Me Asesoran.</p>
-      <p>Bajo el sello <strong>Stibios</strong> construyo mis propios productos: plataformas de <strong>agentes autónomos con LangGraph</strong>, generación de contenido con IA y automatización, desplegados con Docker y observabilidad completa.</p>
-    </div>
+<div class="about">
+  <div class="text">
+    <p>Empecé de forma autodidacta, porque los ordenadores siempre me llamaron la atención, y después me formé en el Grado Superior de Desarrollo de Aplicaciones Multiplataforma en U-tad y en un bootcamp de Python.</p>
+    <p>Desde entonces he trabajado en banca, en producto fiscal y en software de gestión con 25 años de historia. Me gusta entender el problema completo antes de tocar código, y me siento cómoda tanto afinando una interfaz como montando el despliegue.</p>
+    <p>Con IA hago dos cosas: la uso para trabajar mejor y construyo soluciones que la integran, como los agentes y las automatizaciones de mis productos en Stibios. Lo primero acelera, lo segundo resuelve problemas. Ninguna sustituye saber ingeniería.</p>
   </div>
-
-  <div class="about-side r d4">
-    <img src="/me.jpg" alt="Carolina Rodríguez" class="about-img" />
-    <div class="about-code">
-      <div><span class="code-key">name</span>: <span class="code-str">"Carolina Rodríguez"</span></div>
-      <div><span class="code-key">base</span>: <span class="code-str">"Madrid, ES"</span></div>
-      <div><span class="code-key">focus</span>: <span class="code-str">"AI Engineer · Full Cycle"</span></div>
-      <div><span class="code-key">open</span>: <span class="code-bool">true</span></div>
-    </div>
-  </div>
+  <img src="/me.jpg" alt="Carolina Rodríguez" />
 </div>
 
 <style>
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 260px;
-    gap: 5rem;
-    align-items: start;
-  }
-
-  .about-quote {
-    font-size: 1.2rem; font-weight: 500; color: var(--white);
-    line-height: 1.55; letter-spacing: -.01em;
-    border-left: 2px solid var(--accent); padding-left: 1.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .about-body { font-size: .84rem; line-height: 1.9; color: var(--muted2); }
-  .about-body p { margin-bottom: 1.1rem; }
-  .about-body strong { color: var(--text); font-weight: 500; }
-
-  .about-side   { display: flex; flex-direction: column; gap: 1.5rem; }
-  .about-img    { width: 100%; border-radius: 8px; border: 1px solid var(--border); filter: grayscale(10%); display: block; }
-
-  .about-code {
-    background: var(--bg2); border: 1px solid var(--border);
-    border-radius: 8px; padding: 1rem 1.25rem;
-    font-family: 'JetBrains Mono', monospace; font-size: .65rem;
-    line-height: 1.9; color: var(--muted2);
-  }
-  .code-key  { color: var(--accent); }
-  .code-str  { color: #f9a870; }
-  .code-bool { color: var(--green); }
-
-  @media(max-width: 900px) {
-    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-  }
+  .about { display: grid; grid-template-columns: 1fr 260px; gap: clamp(2rem, 6vw, 5rem); align-items: start; }
+  .text { max-width: 62ch; }
+  .text p { margin-bottom: 1.1rem; }
+  img { width: 100%; border-radius: 4px; border: 1px solid var(--line); display: block; }
+  @media (max-width: 760px) { .about { grid-template-columns: 1fr; } img { max-width: 260px; } }
 </style>
