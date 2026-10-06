@@ -1,10 +1,15 @@
 # DESIGN.md — Portfolio v2 (rama `feat/redesign-v2`)
 
-Estado: **PLAN, pendiente de OK**. No hay código de la v2 todavía.
+Estado: **IMPLEMENTADO (opción A)**. Pendiente: datos de MadRing Guide, captura de Stibios, dominio final y revisión del inglés.
 
-## 0. Referencia (rubenbupe.com)
-No he podido abrirla: el proxy de red de la sesión la bloquea (`EGRESS_BLOCKED`). Por tanto **no hay tokens medidos**
-(paleta exacta, escala, easings, duraciones). Lo único que uso son las observaciones del brief:
+## 0. Referencia medida (rubenbupe.com, extraída del CSS/HTML publicado)
+- Tema: fondo `hsl(210 11% 4%)` ≈ #090a0b; superficies #0d0e10 / #16171a; texto #e6e8eb / #f2f3f5; grises #8e949c, #6f747c.
+- Tipografías: Cal Sans (display) + Instrument Serif Italic (acento) + mono del sistema.
+- Easings: `cubic-bezier(.22,1,.36,1)` (ease-out-expo, entrada "rise" 1.1 s), `(.4,0,.2,1)` (por defecto, 150 ms), `(0,0,.2,1)`.
+- Duraciones: hover 150 ms, expansión 300–500 ms, marquee 60 s lineal, entrada 450–1100 ms; respeta reduced-motion.
+- Contenedores: hasta 72rem. Marquee del stack separado por ✦; ficha mono Nombre/Rol/Base.
+- Lo que NO tomo: sus fuentes, sus textos, su paleta gris-azulada, el ✦, la tarjeta terminal ni su layout.
+Observaciones del brief:
 Astro + View Transitions, fondo casi negro (#090a0b), hero con nombre tracking abierto + ficha mono,
 marquees, lista numerada de áreas, timeline con tarjetas que se expanden, mockups con marco de navegador,
 copiar email con confirmación, tono humano y directo.
@@ -77,3 +82,11 @@ Traducción EN marcada con `<!-- PENDIENTE DE REVISIÓN: inglés -->`. Blog: `/b
 ## 6. Criterios de verificación (por sección, 375 px y 1440 px, es y en)
 Contraste AA, foco visible, skip link, `lang` correcto, hreflang es/en, sitemap, OG, JSON-LD Person,
 imágenes webp/avif, Lighthouse > 95 en las 4 categorías, reduced-motion respetado.
+
+## 7. Implementación (resumen)
+- Astro 4.4 + Tailwind 3 + i18n nativo (es en `/`, en `/en`), diccionarios `src/i18n/es.json` y `en.json` (tipados: si difieren, no compila).
+- Hero: mapa de línea interactivo (`LineMap.astro`), un único recorrido al cargar; reduced-motion lo coloca en la última estación.
+- Blog preparado: colección `blog` (MDX) con `lang`; `src/content/blog/plantilla.mdx` es una plantilla en `draft: true`.
+- SEO: canonical, hreflang es/en/x-default, OG, sitemap con i18n, JSON-LD Person. `SITE` en `astro.config.mjs`.
+- Fuentes autoalojadas (Fontsource) e imágenes con `astro:assets` (webp).
+- Lighthouse: sin medir todavía.

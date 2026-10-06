@@ -1,108 +1,48 @@
 ---
-const LAYERS = [
-  {
-    name: "Interfaz",
-    tech: "React, Next.js, Astro, React Native",
-    did:  "Modernicé la interfaz de un DMS con 25 años de historia y construí la app de Me Asesoran Rentas, usada por miles de personas.",
-  },
-  {
-    name: "API y lógica",
-    tech: "Python, FastAPI, Node.js, PHP",
-    did:  "Levanté un portal de APIs REST documentado en YAML, pasé código legacy de ColdFusion a MVC e integré la API y la autenticación de la Agencia Tributaria.",
-  },
-  {
-    name: "Datos",
-    tech: "PostgreSQL, MySQL, SQLite, Supabase",
-    did:  "Optimicé consultas SQL para bajar tiempos de respuesta y diseñé los esquemas de mis propios productos.",
-  },
-  {
-    name: "Agentes y automatización",
-    tech: "LangGraph, LLMs, Celery, Redis",
-    did:  "En Stibios tengo cinco agentes en producción que generan briefings, contenido y leads, con alertas por Telegram cuando algo falla.",
-  },
-  {
-    name: "Despliegue",
-    tech: "Docker, GitHub Actions, AWS, Linux",
-    did:  "Trabajo con entornos de desarrollo, pruebas y producción, con tests automáticos antes de cada despliegue.",
-  },
-]
+import { getDict, type Lang } from '../i18n'
+import LineMap from './LineMap.astro'
+const { lang } = Astro.props as { lang: Lang }
+const d = getDict(lang)
+const s = d.hero.sheet
 ---
 
-<section class="hero wrap">
-  <div class="copy">
-    <h1>Software completo, de la pantalla al servidor. Y la IA donde de verdad suma.</h1>
-    <p class="lead">
-      Soy Carolina Rodríguez, desarrolladora full stack en Madrid. Construyo producto
-      de principio a fin: interfaces, APIs, bases de datos y despliegue. Desde hace un
-      tiempo también diseño agentes y automatizaciones con IA, siempre sobre una base
-      de ingeniería que aguante en producción.
-    </p>
-    <div class="actions">
-      <a class="btn" href="mailto:carolinarb1994@gmail.com">Cuéntame tu proyecto</a>
-      <a class="txt" href="/cv-carolina-rodriguez.pdf" download>Descargar CV</a>
-    </div>
-  </div>
+<section id="inicio" class="wrap pt-16 pb-20 md:pt-28 md:pb-28">
+  <div class="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-20">
+    <div>
+      <dl class="mb-10 grid max-w-sm grid-cols-[auto_1fr] gap-x-6 gap-y-1 font-mono text-xs text-niebla">
+        <dt>{s.name}</dt><dd class="text-papel">Carolina Rodríguez</dd>
+        <dt>{s.role}</dt><dd class="text-papel">Full Stack · AI</dd>
+        <dt>{s.base}</dt><dd class="text-papel">{s.baseValue}</dd>
+        <dt>{s.stop}</dt><dd class="text-ambar">{s.stopValue}</dd>
+      </dl>
 
-  <div class="trace">
-    <p class="trace-title">Una petición, de punta a punta</p>
-    <p class="trace-hint">Abre cada capa para ver qué he hecho en ella.</p>
-    <div class="layers">
-      {LAYERS.map((l, i) => (
-        <details name="layer" open={i === 0}>
-          <summary>
-            <span class="node" aria-hidden="true"></span>
-            <span class="lname">{l.name}</span>
-            <span class="ltech">{l.tech}</span>
-          </summary>
-          <p>{l.did}</p>
-        </details>
-      ))}
+      <h1 class="name font-bold">
+        <span class="block">{d.hero.name1}</span>
+        <span class="block">{d.hero.name2}</span>
+      </h1>
+      <p class="mt-6 text-s1 text-ambar font-medium">{d.hero.role}</p>
+      <p class="mt-5 max-w-[34ch] text-s1 text-papel/90">{d.hero.intro}</p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-x-7 gap-y-4">
+        <a href="#contacto" class="cta inline-flex items-center gap-2 rounded-sm bg-ambar px-6 py-3 font-semibold text-noche transition-colors duration-150 hover:bg-papel">
+          {d.hero.cta}
+        </a>
+        <a href="/cv-carolina-rodriguez.pdf" download class="underline underline-offset-4 decoration-riel transition-colors hover:decoration-ambar">{d.hero.cv}</a>
+      </div>
     </div>
+
+    <LineMap lang={lang} />
   </div>
 </section>
 
 <style>
-  .hero {
-    display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(2rem, 6vw, 6rem);
-    align-items: start; padding-top: clamp(3rem, 8vw, 6rem); padding-bottom: clamp(3rem, 7vw, 5.5rem);
+  .name {
+    font-size: clamp(3.4rem, 9vw, 7.2rem);
+    line-height: .92;
+    letter-spacing: -.045em;
   }
-  h1 {
-    font-family: var(--display); font-weight: 700;
-    font-size: clamp(2.3rem, 5.2vw, 4.4rem); line-height: 1.02; letter-spacing: -.035em;
-    margin-bottom: 1.5rem; text-wrap: balance;
-  }
-  .actions { display: flex; align-items: center; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap; }
-  .btn {
-    background: var(--ink); color: var(--bg); text-decoration: none;
-    padding: .8rem 1.4rem; border-radius: 4px; font-weight: 500; transition: background .15s;
-  }
-  .btn:hover { background: var(--accent); }
-  .txt { text-underline-offset: 4px; font-weight: 500; }
-  .txt:hover { color: var(--accent); }
-
-  .trace-title { font-family: var(--display); font-weight: 600; font-size: 1.15rem; }
-  .trace-hint { color: var(--muted); font-size: .9rem; margin-bottom: 1.25rem; }
-  .layers { position: relative; border-top: 1px solid var(--line); }
-  .layers::before {
-    content: ''; position: absolute; left: 7px; top: 0; bottom: 0; width: 2px;
-    background: var(--line);
-  }
-  details { border-bottom: 1px solid var(--line); position: relative; }
-  summary {
-    list-style: none; cursor: pointer; padding: 1rem 0 1rem 2rem;
-    display: grid; grid-template-columns: 1fr; gap: .1rem; position: relative;
-  }
-  summary::-webkit-details-marker { display: none; }
-  .node {
-    position: absolute; left: 0; top: 1.3rem; width: 16px; height: 16px;
-    background: var(--bg); border: 2px solid var(--ink); border-radius: 50%;
-    transition: background .2s, border-color .2s, transform .2s;
-  }
-  details[open] .node { background: var(--accent); border-color: var(--accent); transform: scale(1.1); }
-  summary:hover .node { border-color: var(--accent); }
-  .lname { font-family: var(--display); font-weight: 600; font-size: 1.15rem; letter-spacing: -.01em; }
-  .ltech { font-family: var(--mono); font-size: .75rem; color: var(--muted); }
-  details p { padding: 0 0 1.1rem 2rem; max-width: 52ch; font-size: .95rem; }
-
-  @media (max-width: 900px) { .hero { grid-template-columns: 1fr; } }
+  /* única animación de carga: el nombre sube una vez */
+  .name span { animation: salida 900ms cubic-bezier(.2,.7,.2,1) both; }
+  .name span:nth-child(2) { animation-delay: 90ms; }
+  @keyframes salida { from { opacity: 0; transform: translateY(.35em); } to { opacity: 1; transform: none; } }
 </style>

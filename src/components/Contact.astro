@@ -1,0 +1,44 @@
+---
+import { getDict, type Lang } from '../i18n'
+const { lang } = Astro.props as { lang: Lang }
+const d = getDict(lang)
+---
+
+<section id="contacto" class="section wrap scroll-mt-14 border-t border-riel">
+  <h2 class="text-s5 md:text-s6 max-w-[14ch] font-bold" style="letter-spacing:-.04em">{d.contact.title}</h2>
+  <p class="mt-6 max-w-[44ch] text-s1 text-niebla">{d.contact.text}</p>
+
+  <div class="mt-10 flex flex-wrap items-center gap-4">
+    <a href={`mailto:${d.contact.email}`} class="font-mono text-s1 underline underline-offset-8 decoration-ambar decoration-2 hover:text-ambar">{d.contact.email}</a>
+    <button type="button" data-copy={d.contact.email} data-copied={d.contact.copied} class="copy rounded-sm border border-riel px-4 py-2 font-mono text-xs text-niebla transition-colors hover:border-ambar hover:text-papel">
+      <span data-label>{d.contact.copy}</span>
+    </button>
+    <span class="sr-only" role="status" aria-live="polite" data-status></span>
+  </div>
+</section>
+
+<script>
+  function init() {
+    document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach(btn => {
+      if (btn.dataset.ready) return
+      btn.dataset.ready = '1'
+      const label = btn.querySelector<HTMLElement>('[data-label]')!
+      const status = btn.parentElement!.querySelector<HTMLElement>('[data-status]')!
+      const original = label.textContent
+      btn.addEventListener('click', async () => {
+        const value = btn.dataset.copy!
+        try { await navigator.clipboard.writeText(value) }
+        catch {
+          const t = document.createElement('textarea')
+          t.value = value; document.body.appendChild(t); t.select()
+          document.execCommand('copy'); t.remove()
+        }
+        label.textContent = btn.dataset.copied!
+        status.textContent = btn.dataset.copied!
+        btn.style.borderColor = '#3dd6b0'
+        setTimeout(() => { label.textContent = original; status.textContent = ''; btn.style.borderColor = '' }, 2200)
+      })
+    })
+  }
+  document.addEventListener('astro:page-load', init)
+</script>

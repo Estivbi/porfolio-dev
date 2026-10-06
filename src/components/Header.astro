@@ -1,32 +1,39 @@
 ---
-const navItems = [
-  { title: "Qué resuelvo", url: "/#servicios" },
-  { title: "Trabajo",      url: "/#trabajo" },
-  { title: "Proyectos",    url: "/#proyectos" },
-  { title: "Sobre mí",     url: "/#sobre-mi" },
+import { getDict, path, type Lang } from '../i18n'
+const { lang, route = '/' } = Astro.props as { lang: Lang; route?: string }
+const d = getDict(lang)
+const home = path(lang, '/')
+const links = [
+  { t: d.nav.about, h: `${home}#sobre-mi` },
+  { t: d.nav.experience, h: `${home}#experiencia` },
+  { t: d.nav.work, h: `${home}#proyectos` },
+  { t: d.nav.blog, h: path(lang, '/blog/') },
 ]
+const other: Lang = lang === 'es' ? 'en' : 'es'
 ---
 
-<header class="top">
-  <div class="wrap bar">
-    <a href="/" class="logo">Carolina Rodríguez</a>
-    <nav aria-label="Principal">
-      <ul>
-        {navItems.map(l => <li><a href={l.url}>{l.title}</a></li>)}
-        <li><a href="mailto:carolinarb1994@gmail.com" class="cta">Escríbeme</a></li>
+<header class="sticky top-0 z-50 border-b border-riel/70 bg-noche/80 backdrop-blur-md">
+  <div class="wrap flex h-14 items-center justify-between gap-6">
+    <a href={home} class="flex items-center gap-2 font-semibold tracking-tight">
+      <span class="station" aria-hidden="true" style="border-color:#f2a33a"></span>
+      Carolina Rodríguez
+    </a>
+    <nav aria-label={d.a11y.menu} class="flex items-center gap-5 text-sm md:gap-7">
+      <ul class="hidden items-center gap-7 md:flex">
+        {links.map(l => <li><a href={l.h} class="text-niebla transition-colors duration-150 hover:text-papel">{l.t}</a></li>)}
       </ul>
+      <a href="/cv-carolina-rodriguez.pdf" download class="hidden text-niebla transition-colors hover:text-papel sm:inline">{d.nav.cv}</a>
+      <a
+        href={path(other, route)}
+        hreflang={other}
+        lang={other}
+        aria-label={`${d.a11y.lang}: ${other === 'es' ? 'Español' : 'English'}`}
+        class="font-mono text-xs text-niebla"
+      >
+        <span class={lang === 'es' ? 'text-papel' : ''} aria-current={lang === 'es' ? 'true' : undefined}>ES</span>
+        <span aria-hidden="true"> / </span>
+        <span class={lang === 'en' ? 'text-papel' : ''} aria-current={lang === 'en' ? 'true' : undefined}>EN</span>
+      </a>
     </nav>
   </div>
 </header>
-
-<style>
-  .top { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-  .bar { display: flex; justify-content: space-between; align-items: center; height: 60px; }
-  .logo { font-family: var(--display); font-weight: 700; font-size: 1.05rem; letter-spacing: -.01em; text-decoration: none; }
-  ul { display: flex; align-items: center; gap: 1.75rem; list-style: none; }
-  nav a { font-size: .9rem; text-decoration: none; color: var(--muted); transition: color .15s; }
-  nav a:hover { color: var(--ink); }
-  .cta { color: #fff; background: var(--accent); padding: .45rem .95rem; border-radius: 4px; font-weight: 500; }
-  nav a.cta:hover { color: #fff; background: #1a30d0; }
-  @media (max-width: 760px) { li:not(:last-child) { display: none; } }
-</style>

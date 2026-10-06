@@ -1,0 +1,238 @@
+{
+  "_review": "Idioma principal.",
+  "meta": {
+    "title": "Carolina Rodríguez · Full Stack Developer & AI Engineer",
+    "description": "Desarrolladora full stack e ingeniera de IA en Madrid. Interfaces, APIs, datos, despliegue y agentes autónomos que llegan a producción."
+  },
+  "a11y": {
+    "skip": "Saltar al contenido",
+    "menu": "Principal",
+    "lang": "Cambiar idioma"
+  },
+  "nav": {
+    "about": "Sobre mí",
+    "experience": "Experiencia",
+    "work": "Proyectos",
+    "blog": "Blog",
+    "contact": "Contacto",
+    "cv": "CV"
+  },
+  "hero": {
+    "name1": "Carolina",
+    "name2": "Rodríguez",
+    "role": "Full Stack Developer & AI Engineer",
+    "intro": "Construyo software que llega a producción: de la interfaz al despliegue, y agentes con IA cuando de verdad ayudan.",
+    "cta": "Hablemos",
+    "cv": "Descargar CV",
+    "sheet": {
+      "name": "Nombre",
+      "role": "Rol",
+      "base": "Base",
+      "stop": "Última parada",
+      "baseValue": "Madrid, España",
+      "stopValue": "tu proyecto"
+    },
+    "mapLabel": "Mapa de una petición, de punta a punta",
+    "mapHint": "Toca una estación para ver qué hago en ella.",
+    "stations": [
+      {
+        "name": "Idea",
+        "text": "Entiendo qué problema hay que resolver antes de abrir el editor.",
+        "tech": "Jira, Confluence, Figma"
+      },
+      {
+        "name": "Interfaz",
+        "text": "Frontend cuidado, del diseño en Figma a una web que carga rápido.",
+        "tech": "React, Next.js, Astro, Tailwind"
+      },
+      {
+        "name": "API",
+        "text": "Backends y APIs REST documentadas, con la base de datos bien pensada.",
+        "tech": "Python, FastAPI, Node.js, PHP, SQL"
+      },
+      {
+        "name": "Agente",
+        "text": "Agentes y automatizaciones que trabajan solos y avisan cuando algo falla.",
+        "tech": "LangGraph, LLMs, Celery, Redis"
+      },
+      {
+        "name": "Producción",
+        "text": "Despliegue con contenedores y CI/CD, con tests antes de cada versión.",
+        "tech": "Docker, GitHub Actions, AWS, Linux"
+      }
+    ]
+  },
+  "stack": {
+    "label": "Tecnologías con las que trabajo"
+  },
+  "about": {
+    "title": "Un poco de mí.",
+    "paragraphs": [
+      "Los ordenadores siempre me llamaron la atención, así que empecé por mi cuenta, rompiendo cosas y arreglándolas. Después lo formalicé con el Grado Superior en Desarrollo de Aplicaciones Multiplataforma en U-tad y un bootcamp de Python.",
+      "Desde entonces he pasado por banca, por producto fiscal y por software de gestión con más de 25 años de historia. Me gusta entender el problema entero antes de tocar código, y me siento igual de cómoda afinando una interfaz que montando el despliegue.",
+      "Con la IA hago dos cosas distintas: la uso para trabajar mejor y construyo soluciones que la integran, como los agentes y automatizaciones de mis productos. Lo primero me acelera; lo segundo resuelve problemas. Ninguna de las dos sustituye saber ingeniería."
+    ],
+    "photoAlt": "Retrato de Carolina Rodríguez",
+    "areasTitle": "Lo que hago a diario",
+    "areas": [
+      {
+        "name": "Desarrollo web",
+        "tech": "React, Next.js, Astro, Tailwind"
+      },
+      {
+        "name": "Backend",
+        "tech": "Python, FastAPI, Node.js, PHP"
+      },
+      {
+        "name": "Arquitectura",
+        "tech": "MVC, APIs REST, Clean Code"
+      },
+      {
+        "name": "IA y agentes",
+        "tech": "LangGraph, LLMs, automatización"
+      },
+      {
+        "name": "UX e interfaces",
+        "tech": "Figma, diseño de interfaces"
+      },
+      {
+        "name": "Producto",
+        "tech": "Scrum, Agile, Jira"
+      }
+    ]
+  },
+  "experience": {
+    "title": "Por dónde he pasado.",
+    "hint": "Despliega cada parada para ver qué hice allí.",
+    "items": [
+      {
+        "company": "CSS Connection Soft Service",
+        "role": "Lead Frontend y Full Stack Developer",
+        "period": "ene. 2026 – presente",
+        "points": [
+          "Modernización integral de la interfaz de un DMS con más de 25 años en el mercado, con JavaScript y diseño en Figma.",
+          "Análisis de la arquitectura para renovar el portal corporativo y liderazgo de la migración a WordPress para integrar el blog y el SEO.",
+          "Liderazgo del desarrollo desde cero de un portal de APIs RESTful, con los endpoints documentados en YAML.",
+          "Refactorización de código legacy en ColdFusion hacia una arquitectura MVC y optimización de consultas SQL para reducir tiempos de respuesta.",
+          "Trabajo con Jira, control de versiones y documentación técnica en Confluence."
+        ],
+        "tags": [
+          "JavaScript",
+          "APIs REST",
+          "ColdFusion",
+          "SQL",
+          "WordPress",
+          "Figma"
+        ]
+      },
+      {
+        "company": "Stibios",
+        "role": "Producto independiente (marca personal)",
+        "period": "en curso",
+        "points": [
+          "Diseño y construcción de mis propios productos, de la idea al despliegue.",
+          "Stibios Agent Platform: cinco agentes autónomos en producción, cada uno como un grafo de LangGraph con observabilidad y alertas por Telegram."
+        ],
+        "tags": [
+          "Python",
+          "LangGraph",
+          "FastAPI",
+          "Docker"
+        ]
+      },
+      {
+        "company": "Revista Victoria",
+        "role": "Cofundadora y Full Stack Developer",
+        "period": "abr. 2025 – presente",
+        "points": [
+          "Diseño y desarrollo desde cero de la web de una revista de moda independiente, alineada con su identidad editorial.",
+          "Estructura optimizada para SEO y un gestor de contenidos a medida para que la redacción actualice el sitio sin ayuda.",
+          "Mantenimiento continuo, ajustes visuales y soporte técnico."
+        ],
+        "tags": [
+          "Astro",
+          "React",
+          "Sanity",
+          "SEO"
+        ]
+      },
+      {
+        "company": "Indra",
+        "role": "Desarrolladora Full Stack",
+        "period": "sep. 2025 – 2026",
+        "points": [
+          "Mejoras en el frontend (JavaScript) y el backend (PHP) de un sistema de monitorización, optimizando interfaces y procesos de carga de datos.",
+          "Tests automáticos y funcionales para validar cada novedad antes del despliegue.",
+          "Colaboración en entornos DevOps con máquinas virtuales de desarrollo, pruebas y producción."
+        ],
+        "tags": [
+          "JavaScript",
+          "PHP",
+          "Testing",
+          "DevOps"
+        ]
+      },
+      {
+        "company": "Me Asesoran",
+        "role": "Desarrolladora Full Stack",
+        "period": "nov. 2023 – jun. 2025",
+        "points": [
+          "Trabajo cercano con el equipo de producto para convertir necesidades de usuarios en funcionalidades.",
+          "Desarrollo de Me Asesoran Rentas, backend y frontend: integración con la API y el sistema de autenticación del gobierno de España, y validación y envío de declaraciones por parte de asesores fiscales."
+        ],
+        "tags": [
+          "Next.js",
+          "React Native",
+          "Tailwind",
+          "API AEAT"
+        ]
+      }
+    ]
+  },
+  "work": {
+    "title": "Lo que ya funciona.",
+    "visit": "Ver en vivo",
+    "pending": "Captura pendiente",
+    "items": [
+      {
+        "name": "MadRing Guide",
+        "url": "",
+        "text": "Guía en formato PWA para moverse por el Gran Premio de Fórmula 1 de Madrid.",
+        "tags": []
+      },
+      {
+        "name": "Stibios Agent Platform",
+        "url": "https://stibios.com",
+        "text": "Plataforma de agentes autónomos que gestiona la operativa y el contenido de mis proyectos. Hay cinco en producción: Dev Briefing, News Intelligence, Blog Stibios, Blog Victoria y Lead Generation.",
+        "tags": [
+          "Python",
+          "LangGraph",
+          "FastAPI",
+          "Celery",
+          "Redis",
+          "Supabase",
+          "Gemini",
+          "Docker"
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "title": "Próxima parada: tu proyecto.",
+    "text": "Cuéntame qué quieres construir o arreglar y vemos por dónde empezar.",
+    "email": "carolinarb1994@gmail.com",
+    "copy": "Copiar email",
+    "copied": "Copiado. Buen viaje."
+  },
+  "footer": {
+    "made": "Hecho en Madrid, sin prisa y sin plantillas.",
+    "top": "Volver a cabecera",
+    "rights": "Carolina Rodríguez"
+  },
+  "blog": {
+    "title": "Cuaderno de bitácora.",
+    "intro": "Notas sobre desarrollo, agentes y producto. Todavía no hay entradas, pero llegarán.",
+    "empty": "Aún no hay entradas.",
+    "back": "Volver al inicio"
+  }
+}

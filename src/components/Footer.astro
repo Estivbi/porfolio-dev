@@ -1,16 +1,19 @@
 ---
-const year = new Date().getFullYear()
+import { getDict, type Lang } from '../i18n'
+const { lang } = Astro.props as { lang: Lang }
+const d = getDict(lang)
 ---
 
-<footer>
-  <div class="wrap row">
-    <p>© {year} Carolina Rodríguez. Madrid.</p>
-    <p>Mis propios productos viven en <a href="https://stibios.com" target="_blank" rel="noopener">Stibios</a>.</p>
+<footer class="border-t border-riel py-10 text-sm text-niebla">
+  <div class="wrap flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+    <div class="space-y-1">
+      <p>{d.footer.made}</p>
+      <p class="font-mono text-xs">© {new Date().getFullYear()} {d.footer.rights}</p>
+    </div>
+    <ul class="flex flex-wrap items-center gap-6">
+      <li><a class="underline underline-offset-4 hover:text-papel" href="https://linkedin.com/in/carolinarodriguezbarcena" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a class="underline underline-offset-4 hover:text-papel" href="https://github.com/Estivbi" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a class="hover:text-ambar" href="#">{d.footer.top} ↑</a></li>
+    </ul>
   </div>
 </footer>
-
-<style>
-  footer { border-top: 1px solid var(--line); padding: 1.5rem 0; font-size: .85rem; color: var(--muted); }
-  .row { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-  a { color: var(--ink); text-underline-offset: 3px; }
-</style>

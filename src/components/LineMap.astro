@@ -1,0 +1,120 @@
+---
+import { getDict, type Lang } from '../i18n'
+const { lang } = Astro.props as { lang: Lang }
+const d = getDict(lang)
+const st = d.hero.stations
+---
+
+<div class="map" data-map data-count={st.length} role="group" aria-label={d.hero.mapLabel}>
+  <p class="mb-8 text-sm text-niebla">{d.hero.mapHint}</p>
+
+  <div class="rail">
+    <ol class="stations">
+      {st.map((s, i) => (
+        <li>
+          <button type="button" data-i={i} aria-pressed={i === 0 ? 'true' : 'false'} class="stop">
+            <span class="dot station"></span>
+            <span class="label">{s.name}</span>
+          </button>
+        </li>
+      ))}
+    </ol>
+    <span class="train" aria-hidden="true"></span>
+  </div>
+
+  <div class="caption" aria-live="polite">
+    <p data-text class="text-s3 font-medium leading-snug">{st[0].text}</p>
+    <p data-tech class="mt-3 font-mono text-xs text-niebla">{st[0].tech}</p>
+  </div>
+  <script is:inline type="application/json" data-stations set:html={JSON.stringify(st)} />
+</div>
+
+<style>
+  .map { position: relative; max-width: 36rem; }
+  .map :global(.station) { width: 20px; height: 20px; border-width: 3px; }
+  .rail { position: relative; }
+  .stations { list-style: none; display: flex; flex-direction: column; gap: 1.25rem; position: relative; padding-left: 0; }
+  /* la línea */
+  .stations::before {
+    content: ''; position: absolute; left: 9px; top: 10px; bottom: 10px; width: 3px; background: #262c37;
+  }
+  .stop { display: flex; align-items: center; gap: 1rem; cursor: pointer; background: none; border: 0; color: #9aa3b2; font: inherit; padding: .15rem 0; position: relative; z-index: 1; }
+  .stop:hover, .stop[aria-pressed='true'] { color: #e9e6de; }
+  .stop:hover .dot { border-color: #f2a33a; }
+  .label { font-size: 1.3125rem; font-weight: 500; letter-spacing: -.01em; }
+  .train {
+    position: absolute; left: 0; top: 0; width: 20px; height: 20px; border-radius: 50%;
+    background: #f2a33a; box-shadow: 0 0 0 7px rgba(242,163,58,.18);
+    transform: translate(var(--x, 0px), var(--y, 0px));
+    transition: transform 700ms cubic-bezier(.2,.7,.2,1);
+    z-index: 2; pointer-events: none;
+  }
+  .caption { margin-top: 2.25rem; min-height: 11rem; padding-top: 1.5rem; border-top: 1px solid #262c37; }
+  .caption p { transition: opacity 160ms; }
+  .caption.swap p { opacity: 0; }
+
+  @media (min-width: 640px) {
+    .stations { flex-direction: row; justify-content: space-between; gap: .5rem; }
+    .stations::before { left: 10px; right: 10px; top: 9px; bottom: auto; width: auto; height: 3px; }
+    .stop { flex-direction: column; align-items: flex-start; gap: .85rem; }
+    .label { font-size: 1.0625rem; }
+  }
+</style>
+
+<script>
+  function init() {
+    const root = document.querySelector<HTMLElement>('[data-map]')
+    if (!root || root.dataset.ready) return
+    root.dataset.ready = '1'
+    const stations: { text: string; tech: string }[] = JSON.parse(
+      root.querySelector('[data-stations]')!.textContent || '[]'
+    )
+    const buttons = [...root.querySelectorAll<HTMLButtonElement>('button[data-i]')]
+    const train = root.querySelector<HTMLElement>('.train')!
+    const rail = root.querySelector<HTMLElement>('.rail')!
+    const caption = root.querySelector<HTMLElement>('.caption')!
+    const text = root.querySelector<HTMLElement>('[data-text]')!
+    const tech = root.querySelector<HTMLElement>('[data-tech]')!
+    let current = 0
+    let timer: number | undefined
+
+    const place = (i: number, instant = false) => {
+      const dot = buttons[i].querySelector<HTMLElement>('.dot')!
+      const r = rail.getBoundingClientRect()
+      const b = dot.getBoundingClientRect()
+      if (instant) train.style.transition = 'none'
+      train.style.setProperty('--x', `${b.left - r.left}px`)
+      train.style.setProperty('--y', `${b.top - r.top}px`)
+      if (instant) { void train.offsetWidth; train.style.transition = '' }
+    }
+
+    const go = (i: number, instant = false) => {
+      current = i
+      buttons.forEach((b, k) => b.setAttribute('aria-pressed', String(k === i)))
+      place(i, instant)
+      caption.classList.add('swap')
+      setTimeout(() => {
+        text.textContent = stations[i].text
+        tech.textContent = stations[i].tech
+        caption.classList.remove('swap')
+      }, instant ? 0 : 160)
+    }
+
+    buttons.forEach((b, i) =>
+      b.addEventListener('click', () => { window.clearInterval(timer); go(i) })
+    )
+    window.addEventListener('resize', () => place(current, true))
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    place(0, true)
+    if (reduce) { go(stations.length - 1, true); return }
+    // un único recorrido al cargar; un toque del usuario lo detiene
+    let i = 0
+    timer = window.setInterval(() => {
+      i += 1
+      if (i >= stations.length) { window.clearInterval(timer); return }
+      go(i)
+    }, 1500)
+  }
+  document.addEventListener('astro:page-load', init)
+</script>

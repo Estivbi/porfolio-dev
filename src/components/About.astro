@@ -1,0 +1,42 @@
+---
+import { Image } from 'astro:assets'
+import me from '../assets/me.jpg'
+import { getDict, type Lang } from '../i18n'
+const { lang } = Astro.props as { lang: Lang }
+const d = getDict(lang)
+---
+
+<section id="sobre-mi" class="section wrap scroll-mt-14">
+  <h2 class="h2">{d.about.title}</h2>
+  <div class="grid gap-14 lg:grid-cols-[1fr_20rem] lg:gap-20">
+    <div class="max-w-[62ch] space-y-5 text-s1 text-papel/90">
+      {d.about.paragraphs.map(p => <p>{p}</p>)}
+    </div>
+    <Image
+      src={me}
+      alt={d.about.photoAlt}
+      widths={[320, 640]}
+      sizes="(min-width: 1024px) 20rem, 70vw"
+      format="webp"
+      class="w-full max-w-xs rounded-sm border border-riel object-cover lg:max-w-none"
+      loading="lazy"
+    />
+  </div>
+
+  <h3 class="mt-20 mb-6 font-mono text-sm text-niebla">{d.about.areasTitle}</h3>
+  <ul class="grid border-t border-riel md:grid-cols-2 md:gap-x-16">
+    {d.about.areas.map(a => (
+      <li class="area flex items-start gap-4 border-b border-riel py-5">
+        <span class="station mt-2 shrink-0" aria-hidden="true"></span>
+        <div>
+          <p class="text-s1 font-medium">{a.name}</p>
+          <p class="font-mono text-xs text-niebla mt-1">{a.tech}</p>
+        </div>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .area:hover .station { background: #f2a33a; border-color: #f2a33a; }
+</style>
