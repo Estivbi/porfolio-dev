@@ -214,11 +214,28 @@
     "items": [
       {
         "name": "MadRing Guide",
-        "url": "",
-        "text": "Guía en formato PWA para moverse por el Gran Premio de Fórmula 1 de Madrid.",
-        "tags": [],
+        "url": "https://f1madrid.stibios.com",
+        "text": "PWA para seguir el Gran Premio de España de F1 en el circuito MADRING de Madrid, con agenda de la semana, transporte, zonas del circuito y cronometraje en vivo. Dibuja la posición de los coches en tiempo real sobre un trazado generado a partir de la propia telemetría, sin ilustrar cada circuito.",
+        "tags": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Supabase",
+          "Serwist (PWA)",
+          "Framer Motion",
+          "Tailwind",
+          "Vercel",
+          "OpenF1",
+          "GitHub Actions"
+        ],
         "image": "",
-        "imageAlt": ""
+        "imageAlt": "",
+        "role": "Producto, diseño, frontend, backend, base de datos, despliegue y SEO.",
+        "period": "Agosto – septiembre de 2026. Lanzada en el GP del 11 al 13 de septiembre.",
+        "points": [
+          "Un proxy con caché de 25 s, single-flight y peticiones escalonadas mantiene los límites de OpenF1 por mucho tráfico que haya.",
+          "La agenda se renderiza en servidor para que buscadores y asistentes de IA la lean sin ejecutar JavaScript."
+        ]
       },
       {
         "name": "Stibios Agent Platform",
@@ -235,7 +252,10 @@
           "Docker"
         ],
         "image": "",
-        "imageAlt": ""
+        "imageAlt": "",
+        "role": "",
+        "period": "",
+        "points": []
       }
     ],
     "intro": "Son proyectos míos: los diseño, los construyo y los mantengo yo de principio a fin."

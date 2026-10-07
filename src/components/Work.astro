@@ -19,6 +19,16 @@ const agents = ['dev_briefing', 'news_intelligence', 'blog_stibios', 'blog_victo
         <div class={i % 2 ? 'lg:order-2' : ''}>
           <h3 class="text-s3 font-semibold tracking-tight">{p.name}</h3>
           <p class="mt-4 max-w-[52ch] text-s1 text-papel/90">{p.text}</p>
+          {p.points.length > 0 && (
+            <ul class="mt-4 max-w-[52ch] list-disc space-y-2 pl-5 text-niebla marker:text-ambar">
+              {p.points.map(x => <li>{x}</li>)}
+            </ul>
+          )}
+          {(p.role || p.period) && (
+            <p class="mt-5 font-mono text-xs leading-relaxed text-niebla">
+              {p.role}{p.role && p.period && <br />}{p.period}
+            </p>
+          )}
           {p.tags.length > 0 && (
             <ul class="mt-5 flex flex-wrap gap-2">{p.tags.map(t => <li class="chip">{t}</li>)}</ul>
           )}

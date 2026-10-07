@@ -214,11 +214,28 @@
     "items": [
       {
         "name": "MadRing Guide",
-        "url": "",
-        "text": "A PWA guide to getting around the Formula 1 Grand Prix of Madrid.",
-        "tags": [],
+        "url": "https://f1madrid.stibios.com",
+        "text": "A PWA to follow the Spanish F1 Grand Prix at the MADRING circuit in Madrid, with the week's schedule, transport, circuit zones and live timing. It draws the cars' positions in real time on a track generated from the telemetry itself, with no per-circuit illustration.",
+        "tags": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Supabase",
+          "Serwist (PWA)",
+          "Framer Motion",
+          "Tailwind",
+          "Vercel",
+          "OpenF1",
+          "GitHub Actions"
+        ],
         "image": "",
-        "imageAlt": ""
+        "imageAlt": "",
+        "role": "Product, design, frontend, backend, database, deployment and SEO.",
+        "period": "August – September 2026. Launched at the GP on 11–13 September.",
+        "points": [
+          "A proxy with a 25 s cache, single-flight and staggered requests keeps within the OpenF1 rate limits however much traffic there is.",
+          "The schedule is rendered on the server so search engines and AI assistants can read it without running JavaScript."
+        ]
       },
       {
         "name": "Stibios Agent Platform",
@@ -235,7 +252,10 @@
           "Docker"
         ],
         "image": "",
-        "imageAlt": ""
+        "imageAlt": "",
+        "role": "",
+        "period": "",
+        "points": []
       }
     ],
     "intro": "These are my own projects: I design, build and maintain them end to end."
