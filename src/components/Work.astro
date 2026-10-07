@@ -1,12 +1,17 @@
 ---
+import { Image } from 'astro:assets'
 import { getDict, type Lang } from '../i18n'
 const { lang } = Astro.props as { lang: Lang }
 const d = getDict(lang)
+// Capturas opcionales: archivo en src/assets/projects/ y su nombre en "image" (es.json y en.json)
+const imgs = import.meta.glob<{ default: ImageMetadata }>('../assets/projects/*.{jpg,jpeg,png,webp,avif}', { eager: true })
+const img = (name: string) => (name ? imgs[`../assets/projects/${name}`]?.default : undefined)
 const agents = ['dev_briefing', 'news_intelligence', 'blog_stibios', 'blog_victoria', 'lead_generation']
 ---
 
 <section id="proyectos" class="section wrap scroll-mt-14">
   <h2 class="h2">{d.work.title}</h2>
+  <p class="-mt-6 mb-14 max-w-[52ch] text-s1 text-niebla md:-mt-8">{d.work.intro}</p>
 
   <ul class="space-y-20 md:space-y-28">
     {d.work.items.map((p, i) => (
@@ -30,8 +35,10 @@ const agents = ['dev_briefing', 'news_intelligence', 'blog_stibios', 'blog_victo
             <span class="url">{p.url ? p.url.replace('https://', '') : 'madring…'}</span>
           </div>
           <div class="screen">
-            {p.name === 'Stibios Agent Platform' ? (
-              <ul class="font-mono text-xs leading-8 text-niebla">
+            {img(p.image) ? (
+              <Image src={img(p.image)!} alt={p.imageAlt} widths={[480, 800, 1200]} sizes="(min-width: 1024px) 36rem, 90vw" format="webp" loading="lazy" class="block w-full" />
+            ) : p.name === 'Stibios Agent Platform' ? (
+              <ul class="w-full p-6 font-mono text-xs leading-8 text-niebla">
                 {agents.map(a => (
                   <li class="flex items-center justify-between gap-6">
                     <span class="text-papel">{a}</span>
@@ -40,7 +47,7 @@ const agents = ['dev_briefing', 'news_intelligence', 'blog_stibios', 'blog_victo
                 ))}
               </ul>
             ) : (
-              <p class="font-mono text-xs text-niebla">{d.work.pending}</p>
+              <p class="p-6 font-mono text-xs text-niebla">{d.work.pending}</p>
             )}
           </div>
         </div>
@@ -53,7 +60,7 @@ const agents = ['dev_briefing', 'news_intelligence', 'blog_stibios', 'blog_victo
   .frame { border: 1px solid #262c37; border-radius: 6px; overflow: hidden; background: #12161d; }
   .bar { display: flex; align-items: center; gap: .75rem; padding: .6rem .9rem; border-bottom: 1px solid #262c37; }
   .url { font-family: 'Geist Mono Variable', monospace; font-size: .72rem; color: #9aa3b2; background: #0a0c10; border-radius: 3px; padding: .2rem .6rem; flex: 1; }
-  .screen { min-height: 16rem; padding: 1.5rem; display: flex; align-items: center; }
+  .screen { min-height: 16rem; padding: 0; display: flex; align-items: center; }
   .screen > * { width: 100%; }
   .live { width: 7px; height: 7px; border-radius: 50%; background: #3dd6b0; animation: pulso 2s ease-in-out infinite; }
   @keyframes pulso { 50% { opacity: .35; } }

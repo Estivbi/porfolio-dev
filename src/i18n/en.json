@@ -48,7 +48,7 @@
       {
         "name": "API",
         "text": "Backends and documented REST APIs, with a well-thought database.",
-        "tech": "Python, FastAPI, Node.js, PHP, SQL"
+        "tech": "Python, FastAPI, Node.js, PostgreSQL, SQL"
       },
       {
         "name": "Agent",
@@ -72,7 +72,7 @@
   "about": {
     "title": "A little about me.",
     "paragraphs": [
-      "Computers always caught my attention, so I started on my own, breaking things and fixing them. Later I made it formal with a Higher Vocational Degree in Cross-platform Application Development at U-tad and a Python bootcamp.",
+      "I have always been curious about how things work, and computers were the first thing that hooked me. I started on my own and later made it formal with a Higher Vocational Degree in Cross-platform Application Development at U-tad and a Python bootcamp.",
       "Since then I have worked in banking, in a tax product and in management software with more than 25 years of history. I like to understand the whole problem before touching code, and I am just as comfortable polishing an interface as setting up deployment.",
       "With AI I do two different things: I use it to work better, and I build solutions that integrate it, like the agents and automations in my products. The first speeds me up; the second solves problems. Neither replaces knowing engineering."
     ],
@@ -85,7 +85,7 @@
       },
       {
         "name": "Backend",
-        "tech": "Python, FastAPI, Node.js, PHP"
+        "tech": "Python, FastAPI, Node.js, PostgreSQL, SQL"
       },
       {
         "name": "Architecture",
@@ -102,6 +102,10 @@
       {
         "name": "Product",
         "tech": "Scrum, Agile, Jira"
+      },
+      {
+        "name": "DevOps",
+        "tech": "Docker, GitHub Actions, AWS, CI/CD"
       }
     ]
   },
@@ -127,7 +131,9 @@
           "SQL",
           "WordPress",
           "Figma"
-        ]
+        ],
+        "image": "",
+        "imageAlt": ""
       },
       {
         "company": "Stibios",
@@ -142,7 +148,9 @@
           "LangGraph",
           "FastAPI",
           "Docker"
-        ]
+        ],
+        "image": "",
+        "imageAlt": ""
       },
       {
         "company": "Revista Victoria",
@@ -158,7 +166,9 @@
           "React",
           "Sanity",
           "SEO"
-        ]
+        ],
+        "image": "",
+        "imageAlt": ""
       },
       {
         "company": "Indra",
@@ -174,7 +184,9 @@
           "PHP",
           "Testing",
           "DevOps"
-        ]
+        ],
+        "image": "",
+        "imageAlt": ""
       },
       {
         "company": "Me Asesoran",
@@ -189,7 +201,9 @@
           "React Native",
           "Tailwind",
           "AEAT API"
-        ]
+        ],
+        "image": "",
+        "imageAlt": ""
       }
     ]
   },
@@ -202,7 +216,9 @@
         "name": "MadRing Guide",
         "url": "",
         "text": "A PWA guide to getting around the Formula 1 Grand Prix of Madrid.",
-        "tags": []
+        "tags": [],
+        "image": "",
+        "imageAlt": ""
       },
       {
         "name": "Stibios Agent Platform",
@@ -217,9 +233,12 @@
           "Supabase",
           "Gemini",
           "Docker"
-        ]
+        ],
+        "image": "",
+        "imageAlt": ""
       }
-    ]
+    ],
+    "intro": "These are my own projects: I design, build and maintain them end to end."
   },
   "contact": {
     "title": "Next stop: your project.",
