@@ -1,14 +1,15 @@
 ---
 import { getDict, type Lang } from '../i18n'
 import LineMap from './LineMap.astro'
+import Lanyard from './Lanyard.astro'
 const { lang } = Astro.props as { lang: Lang }
 const d = getDict(lang)
 const s = d.hero.sheet
 ---
 
 <section id="inicio" class="wrap pt-16 pb-20 md:pt-28 md:pb-28">
-  <div class="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-20">
-    <div>
+  <div class="hero-grid">
+    <div class="text">
       <dl class="mb-10 grid max-w-sm grid-cols-[auto_1fr] gap-x-6 gap-y-1 font-mono text-xs text-niebla">
         <dt>{s.name}</dt><dd class="text-papel">Carolina Rodríguez</dd>
         <dt>{s.role}</dt><dd class="text-papel">Full Stack · AI</dd>
@@ -24,18 +25,24 @@ const s = d.hero.sheet
       <p class="mt-5 max-w-[34ch] text-s1 text-papel/90">{d.hero.intro}</p>
 
       <div class="mt-9 flex flex-wrap items-center gap-x-7 gap-y-4">
-        <a href="#contacto" class="cta inline-flex items-center gap-2 rounded-sm bg-ambar px-6 py-3 font-semibold text-noche transition-colors duration-150 hover:bg-papel">
+        <a href="#contacto" class="inline-flex items-center gap-2 rounded-sm bg-ambar px-6 py-3 font-semibold text-noche transition-colors duration-150 hover:bg-papel">
           {d.hero.cta}
         </a>
         <a href="/cv-carolina-rodriguez.pdf" download class="underline underline-offset-4 decoration-riel transition-colors hover:decoration-ambar">{d.hero.cv}</a>
       </div>
     </div>
 
-    <LineMap lang={lang} />
+    <div class="badge"><Lanyard lang={lang} /></div>
+    <div class="map"><LineMap lang={lang} /></div>
   </div>
 </section>
 
 <style>
+  .hero-grid { display: grid; gap: 3.5rem; grid-template-areas: "text" "badge" "map"; }
+  .text { grid-area: text; } .badge { grid-area: badge; } .map { grid-area: map; }
+  @media (min-width: 1024px) {
+    .hero-grid { grid-template-columns: 1.1fr 1fr; column-gap: 5rem; row-gap: 4.5rem; grid-template-areas: "text badge" "map badge"; }
+  }
   .name {
     font-size: clamp(3.4rem, 9vw, 7.2rem);
     line-height: .92;

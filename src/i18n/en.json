@@ -60,7 +60,11 @@
         "text": "Deployment with containers and CI/CD, with tests before every release.",
         "tech": "Docker, GitHub Actions, AWS, Linux"
       }
-    ]
+    ],
+    "badge": {
+      "label": "Full Stack Line",
+      "back": "Madrid · Full Stack · AI Engineer · next stop: your project"
+    }
   },
   "stack": {
     "label": "Technologies I work with"

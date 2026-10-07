@@ -60,7 +60,11 @@
         "text": "Despliegue con contenedores y CI/CD, con tests antes de cada versión.",
         "tech": "Docker, GitHub Actions, AWS, Linux"
       }
-    ]
+    ],
+    "badge": {
+      "label": "Línea Full Stack",
+      "back": "Madrid · Full Stack · AI Engineer · próxima parada: tu proyecto"
+    }
   },
   "stack": {
     "label": "Tecnologías con las que trabajo"
