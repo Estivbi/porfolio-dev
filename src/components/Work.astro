@@ -42,7 +42,7 @@ const agents = ['dev_briefing', 'news_intelligence', 'blog_stibios', 'blog_victo
         <div class="frame">
           <div class="bar">
             <span class="station" aria-hidden="true" style="width:9px;height:9px;border-width:1.5px"></span>
-            <span class="url">{p.url ? p.url.replace('https://', '') : 'madring…'}</span>
+            <span class="url">{p.url ? p.url.replace('https://', '') : d.work.private}</span>
           </div>
           <div class="screen">
             {img(p.image) ? (
@@ -52,7 +52,7 @@ const agents = ['dev_briefing', 'news_intelligence', 'blog_stibios', 'blog_victo
                 {agents.map(a => (
                   <li class="flex items-center justify-between gap-6">
                     <span class="text-papel">{a}</span>
-                    <span class="flex items-center gap-2 text-envivo"><span class="live" aria-hidden="true"></span>online</span>
+                    <span class="text-niebla">LangGraph</span>
                   </li>
                 ))}
               </ul>

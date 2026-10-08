@@ -141,13 +141,13 @@
         "period": "ongoing",
         "points": [
           "Design and build of my own products, from idea to deployment.",
-          "Stibios Agent Platform: five autonomous agents in production, each one a LangGraph graph with observability and Telegram alerts."
+          "Stibios Agent Platform: autonomous agents built with LangGraph and Gemini that generate content and leads for several projects and report through Telegram."
         ],
         "tags": [
           "Python",
           "LangGraph",
           "FastAPI",
-          "Docker"
+          "GitHub Actions"
         ],
         "image": "",
         "imageAlt": ""
@@ -239,26 +239,31 @@
       },
       {
         "name": "Stibios Agent Platform",
-        "url": "https://stibios.com",
-        "text": "An autonomous agent platform that runs the operations and content of my projects. Five are in production: Dev Briefing, News Intelligence, Blog Stibios, Blog Victoria and Lead Generation.",
+        "url": "",
+        "text": "A platform of autonomous AI agents, running 24/7, that generate content, analyze trends and qualify leads for several projects: Revista Victoria, MadRing and Blog Stibios. It orchestrates LangGraph graphs with Gemini 2.5, publishes to Sanity and Supabase and reports through Telegram with no human intervention.",
         "tags": [
           "Python",
           "LangGraph",
+          "Gemini 2.5",
           "FastAPI",
           "Celery",
           "Redis",
           "Supabase",
-          "Gemini",
-          "Docker"
+          "Sanity",
+          "GitHub Actions",
+          "Telegram"
         ],
         "image": "",
         "imageAlt": "",
-        "role": "",
-        "period": "",
-        "points": []
+        "role": "Full stack developer and architect: complete design of the platform, all the agents and the infrastructure.",
+        "period": "May 2026 – present. Private repository.",
+        "points": [
+          "The agents run on GitHub Actions, with cron and manual runs, with no server of my own."
+        ]
       }
     ],
-    "intro": "These are my own projects: I design, build and maintain them end to end."
+    "intro": "These are my own projects: I design, build and maintain them end to end.",
+    "private": "Private repository"
   },
   "contact": {
     "title": "Next stop: your project.",

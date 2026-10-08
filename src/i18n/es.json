@@ -141,13 +141,13 @@
         "period": "en curso",
         "points": [
           "Diseño y construcción de mis propios productos, de la idea al despliegue.",
-          "Stibios Agent Platform: cinco agentes autónomos en producción, cada uno como un grafo de LangGraph con observabilidad y alertas por Telegram."
+          "Stibios Agent Platform: agentes autónomos con LangGraph y Gemini que generan contenido y leads para varios proyectos y reportan por Telegram."
         ],
         "tags": [
           "Python",
           "LangGraph",
           "FastAPI",
-          "Docker"
+          "GitHub Actions"
         ],
         "image": "",
         "imageAlt": ""
@@ -239,26 +239,31 @@
       },
       {
         "name": "Stibios Agent Platform",
-        "url": "https://stibios.com",
-        "text": "Plataforma de agentes autónomos que gestiona la operativa y el contenido de mis proyectos. Hay cinco en producción: Dev Briefing, News Intelligence, Blog Stibios, Blog Victoria y Lead Generation.",
+        "url": "",
+        "text": "Plataforma de agentes de IA autónomos, 24/7, que generan contenido, analizan tendencias y cualifican leads para varios proyectos: Revista Victoria, MadRing y Blog Stibios. Orquesta grafos de LangGraph con Gemini 2.5, publica en Sanity y Supabase y avisa por Telegram sin intervención humana.",
         "tags": [
           "Python",
           "LangGraph",
+          "Gemini 2.5",
           "FastAPI",
           "Celery",
           "Redis",
           "Supabase",
-          "Gemini",
-          "Docker"
+          "Sanity",
+          "GitHub Actions",
+          "Telegram"
         ],
         "image": "",
         "imageAlt": "",
-        "role": "",
-        "period": "",
-        "points": []
+        "role": "Full stack developer y arquitecta: diseño completo de la plataforma, de todos los agentes y de la infraestructura.",
+        "period": "Mayo 2026 – presente. Repositorio privado.",
+        "points": [
+          "Los agentes se ejecutan en GitHub Actions, con cron y ejecución manual, sin servidor propio."
+        ]
       }
     ],
-    "intro": "Son proyectos míos: los diseño, los construyo y los mantengo yo de principio a fin."
+    "intro": "Son proyectos míos: los diseño, los construyo y los mantengo yo de principio a fin.",
+    "private": "Repositorio privado"
   },
   "contact": {
     "title": "Próxima parada: tu proyecto.",
