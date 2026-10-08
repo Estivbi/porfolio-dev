@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; color-scheme: dark; }
+  body { @apply bg-noche text-papel font-sans text-s0 antialiased; }
+  ::selection { background: #f2a33a; color: #0a0c10; }
+  :focus-visible { outline: 2px solid #f2a33a; outline-offset: 3px; border-radius: 2px; }
+  h1, h2, h3 { @apply font-sans; text-wrap: balance; }
+  p { text-wrap: pretty; }
+}
+
+@layer components {
+  .wrap { @apply mx-auto w-full max-w-page px-5 md:px-10; }
+  .section { @apply py-20 md:py-32; }
+  .h2 { @apply text-s3 md:text-s5 font-semibold tracking-tight max-w-[18ch] mb-10 md:mb-14; letter-spacing: -.03em; }
+  .chip { @apply font-mono text-xs text-niebla border border-riel rounded-sm px-2 py-1; }
+  /* glifo de estación: círculo con anillo */
+  .station { @apply inline-block rounded-full border-2 border-papel bg-noche; width: 14px; height: 14px; transition: background .15s, border-color .15s; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}

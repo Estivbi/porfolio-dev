@@ -1,27 +1,19 @@
 ---
-const year = new Date().getFullYear()
+import { getDict, type Lang } from '../i18n'
+const { lang } = Astro.props as { lang: Lang }
+const d = getDict(lang)
 ---
 
-<footer>
-  <p>© {year} Carolina Rodríguez · <a href="https://stibios.com" target="_blank" rel="noopener">Stibios Labs</a></p>
-  <p>Madrid, España</p>
+<footer class="border-t border-riel py-10 text-sm text-niebla">
+  <div class="wrap flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+    <div class="space-y-1">
+      <p>{d.footer.made}</p>
+      <p class="font-mono text-xs">© {new Date().getFullYear()} {d.footer.rights}</p>
+    </div>
+    <ul class="flex flex-wrap items-center gap-6">
+      <li><a class="underline underline-offset-4 hover:text-papel" href="https://linkedin.com/in/carolinarodriguezbarcena" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a class="underline underline-offset-4 hover:text-papel" href="https://github.com/Estivbi" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a class="hover:text-ambar" href="#">{d.footer.top} ↑</a></li>
+    </ul>
+  </div>
 </footer>
-
-<style>
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 1.25rem 5vw;
-    display: flex; justify-content: space-between; align-items: center;
-    position: relative; z-index: 2;
-  }
-  footer p {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: .65rem; letter-spacing: .08em; color: var(--muted);
-  }
-  footer a { color: var(--muted2); text-decoration: none; transition: color .2s; }
-  footer a:hover { color: var(--accent); }
-
-  @media(max-width: 900px) {
-    footer { padding: 1.25rem; flex-direction: column; gap: .5rem; text-align: center; }
-  }
-</style>
