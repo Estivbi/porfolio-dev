@@ -150,8 +150,8 @@
           "FastAPI",
           "GitHub Actions"
         ],
-        "image": "",
-        "imageAlt": ""
+        "image": "stibios.png",
+        "imageAlt": "Stibios Agents dashboard: a status card for each agent and a table of the latest runs."
       },
       {
         "company": "Revista Victoria",
@@ -168,8 +168,8 @@
           "Sanity",
           "SEO"
         ],
-        "image": "",
-        "imageAlt": ""
+        "image": "revista-victoria.png",
+        "imageAlt": "Revista Victoria home page with the countdown to the next issue and the featured collections."
       },
       {
         "company": "Indra",
@@ -203,8 +203,8 @@
           "Tailwind",
           "AEAT API"
         ],
-        "image": "",
-        "imageAlt": ""
+        "image": "me-asesoran.png",
+        "imageAlt": "Me Asesoran Rentas screen: the “Tax data” step, to connect with the tax agency using Cl@ve PIN."
       }
     ]
   },

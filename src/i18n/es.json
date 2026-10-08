@@ -150,8 +150,8 @@
           "FastAPI",
           "GitHub Actions"
         ],
-        "image": "",
-        "imageAlt": ""
+        "image": "stibios.png",
+        "imageAlt": "Panel de Stibios Agents: tarjetas de estado de cada agente y tabla con las últimas ejecuciones."
       },
       {
         "company": "Revista Victoria",
@@ -168,8 +168,8 @@
           "Sanity",
           "SEO"
         ],
-        "image": "",
-        "imageAlt": ""
+        "image": "revista-victoria.png",
+        "imageAlt": "Portada de Revista Victoria con la cuenta atrás del próximo número y las colecciones destacadas."
       },
       {
         "company": "Indra",
@@ -203,8 +203,8 @@
           "Tailwind",
           "API AEAT"
         ],
-        "image": "",
-        "imageAlt": ""
+        "image": "me-asesoran.png",
+        "imageAlt": "Pantalla de Me Asesoran Rentas: el paso «Datos fiscales», para conectar con la Agencia Tributaria mediante Cl@ve PIN."
       }
     ]
   },
