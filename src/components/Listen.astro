@@ -21,7 +21,7 @@ const src = Object.entries(files).find(([k]) => k.includes(`presentacion.${lang}
     {d.listen.text && (
       <details class="transcript">
         <summary>{d.listen.transcript}</summary>
-        <p>{d.listen.text}</p>
+        {d.listen.text.split('\n\n').map(par => <p>{par}</p>)}
       </details>
     )}
   </div>
