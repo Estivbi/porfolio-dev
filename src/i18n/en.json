@@ -271,7 +271,8 @@
     "text": "Tell me what you want to build or fix and we will see where to start.",
     "email": "carolinarb1994@gmail.com",
     "copy": "Copy email",
-    "copied": "Copied. Have a good trip."
+    "copied": "Copied. Have a good trip.",
+    "copyFail": "Could not copy. Select it and copy it by hand."
   },
   "footer": {
     "made": "Made in Madrid, without rush and without templates.",

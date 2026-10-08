@@ -271,7 +271,8 @@
     "text": "Cuéntame qué quieres construir o arreglar y vemos por dónde empezar.",
     "email": "carolinarb1994@gmail.com",
     "copy": "Copiar email",
-    "copied": "Copiado. Buen viaje."
+    "copied": "Copiado. Buen viaje.",
+    "copyFail": "No se pudo copiar. Selecciónalo y cópialo a mano."
   },
   "footer": {
     "made": "Hecho en Madrid, sin prisa y sin plantillas.",
