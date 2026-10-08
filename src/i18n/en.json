@@ -301,5 +301,11 @@
         "text": "Official APIs, authentication and validations, like the integration with the Spanish tax agency."
       }
     ]
+  },
+  "listen": {
+    "label": "Listen to me",
+    "pause": "Pause",
+    "transcript": "Read the transcript",
+    "text": ""
   }
 }

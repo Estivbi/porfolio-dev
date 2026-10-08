@@ -42,6 +42,9 @@ DESIGN.md       dirección de diseño y tokens (paleta, tipografía, movimiento)
 - **Proyectos y experiencia:** también salen de los diccionarios (`work` y `experience`).
 - **Dominio:** cámbialo en la constante `SITE` de `astro.config.mjs`. Lo usan el sitemap,
   las URLs canónicas, hreflang y el JSON-LD.
+- **Audio de presentación:** deja `presentacion.es.mp3` y/o `presentacion.en.mp3` en `src/assets/audio/`.
+  El botón «Escúchame» del hero aparece solo en los idiomas que tengan archivo. Para añadir la
+  transcripción, rellena `listen.text` en `es.json` / `en.json`.
 - **CV:** `public/cv-carolina-rodriguez.pdf`.
 
 ## Despliegue

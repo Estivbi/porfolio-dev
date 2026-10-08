@@ -301,5 +301,11 @@
         "text": "APIs oficiales, autenticación y validaciones, como la integración con la Agencia Tributaria."
       }
     ]
+  },
+  "listen": {
+    "label": "Escúchame",
+    "pause": "Pausar",
+    "transcript": "Leer la transcripción",
+    "text": ""
   }
 }
