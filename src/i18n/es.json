@@ -228,8 +228,8 @@
           "OpenF1",
           "GitHub Actions"
         ],
-        "image": "",
-        "imageAlt": "",
+        "image": "madring-inicio.png",
+        "imageAlt": "Pantalla de inicio de MadRing Guide: cuenta atrás, accesos a agenda, zonas, transporte y datos de F1.",
         "role": "Producto, diseño, frontend, backend, base de datos, despliegue y SEO.",
         "period": "Agosto – septiembre de 2026. Lanzada en el GP del 11 al 13 de septiembre.",
         "points": [

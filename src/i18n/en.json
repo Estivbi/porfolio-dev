@@ -228,8 +228,8 @@
           "OpenF1",
           "GitHub Actions"
         ],
-        "image": "",
-        "imageAlt": "",
+        "image": "madring-inicio.png",
+        "imageAlt": "MadRing Guide home screen: countdown and shortcuts to schedule, zones, transport and F1 data.",
         "role": "Product, design, frontend, backend, database, deployment and SEO.",
         "period": "August – September 2026. Launched at the GP on 11–13 September.",
         "points": [
