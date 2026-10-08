@@ -46,7 +46,7 @@ const agents = ['dev_briefing', 'news_intelligence', 'blog_stibios', 'blog_victo
           </div>
           <div class="screen">
             {img(p.image) ? (
-              <Image src={img(p.image)!} alt={p.imageAlt} widths={[480, 800, 1200]} sizes="(min-width: 1024px) 36rem, 90vw" format="webp" loading="lazy" class="block w-full" />
+              <Image src={img(p.image)!} alt={p.imageAlt} widths={[480, 800, 1200]} sizes="(min-width: 1024px) 36rem, 90vw" format="webp" loading="lazy" class="block max-h-[28rem] w-full object-cover object-top" />
             ) : p.name === 'Stibios Agent Platform' ? (
               <ul class="w-full p-6 font-mono text-xs leading-8 text-niebla">
                 {agents.map(a => (

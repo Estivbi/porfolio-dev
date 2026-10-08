@@ -253,12 +253,13 @@
           "GitHub Actions",
           "Telegram"
         ],
-        "image": "",
-        "imageAlt": "",
+        "image": "stibios-panel.png",
+        "imageAlt": "Stibios Agents dashboard: a status card for each agent and a table of the latest runs.",
         "role": "Full stack developer and architect: complete design of the platform, all the agents and the infrastructure.",
         "period": "May 2026 – present. Private repository.",
         "points": [
-          "The agents run on GitHub Actions, with cron and manual runs, with no server of my own."
+          "Eight agents are in production: news, dev briefing, blogs (Stibios, Victoria and Pádel), leads, trends and the MadRing scraper.",
+          "They run on GitHub Actions, with cron and manual runs, with no server of my own."
         ]
       }
     ],
