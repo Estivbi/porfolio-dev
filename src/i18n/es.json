@@ -15,7 +15,6 @@
     "about": "Sobre mí",
     "experience": "Experiencia",
     "work": "Proyectos",
-    "blog": "Blog",
     "contact": "Contacto",
     "cv": "CV"
   },
@@ -281,10 +280,26 @@
     "top": "Volver a cabecera",
     "rights": "Carolina Rodríguez"
   },
-  "blog": {
-    "title": "Cuaderno de bitácora.",
-    "intro": "Notas sobre desarrollo, agentes y producto. Todavía no hay entradas, pero llegarán.",
-    "empty": "Aún no hay entradas.",
-    "back": "Volver al inicio"
+  "help": {
+    "title": "Puedo ayudarte con.",
+    "cta": "Cuéntame tu caso",
+    "items": [
+      {
+        "name": "Una web o un producto desde cero",
+        "text": "Lo diseño, lo construyo y lo despliego: de la interfaz a la base de datos, en web y en móvil."
+      },
+      {
+        "name": "Modernizar un sistema antiguo",
+        "text": "Refactorizo código legacy, documento las APIs y renuevo la interfaz sin parar el negocio."
+      },
+      {
+        "name": "Automatizar con IA",
+        "text": "Agentes y automatizaciones con LangGraph y LLMs que trabajan solos y avisan si algo falla."
+      },
+      {
+        "name": "Integraciones con terceros",
+        "text": "APIs oficiales, autenticación y validaciones, como la integración con la Agencia Tributaria."
+      }
+    ]
   }
 }
