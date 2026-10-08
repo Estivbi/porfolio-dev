@@ -6,7 +6,7 @@ import robotsTxt from 'astro-robots-txt'
 
 // SITE: dominio canónico. Se usa en canonical, hreflang, sitemap y JSON-LD.
 // Cámbialo aquí cuando tengas el dominio definitivo.
-const SITE = 'https://porfolio.dev'
+const SITE = 'https://carolinadev.vercel.app'
 
 export default defineConfig({
   site: SITE,

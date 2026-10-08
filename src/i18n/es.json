@@ -7,7 +7,9 @@
   "a11y": {
     "skip": "Saltar al contenido",
     "menu": "Principal",
-    "lang": "Cambiar idioma"
+    "lang": "Cambiar idioma",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú"
   },
   "nav": {
     "about": "Sobre mí",
