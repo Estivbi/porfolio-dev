@@ -108,13 +108,24 @@ const st = d.hero.stations
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     place(0, true)
     if (reduce) { go(stations.length - 1, true); return }
-    // un único recorrido al cargar; un toque del usuario lo detiene
-    let i = 0
-    timer = window.setInterval(() => {
-      i += 1
-      if (i >= stations.length) { window.clearInterval(timer); return }
-      go(i)
-    }, 1500)
+    // un único recorrido, que empieza cuando el mapa entra en pantalla
+    // (si no, terminaría antes de que lo veas); un toque del usuario lo detiene
+    let started = false
+    const start = () => {
+      if (started) return
+      started = true
+      let i = 0
+      timer = window.setInterval(() => {
+        i += 1
+        if (i >= stations.length) { window.clearInterval(timer); return }
+        go(i)
+      }, 1500)
+    }
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { io.disconnect(); window.setTimeout(start, 600) }
+    }, { threshold: 0.6 })
+    io.observe(root)
+    buttons.forEach(b => b.addEventListener('click', () => { started = true; io.disconnect() }))
   }
   document.addEventListener('astro:page-load', init)
 </script>
