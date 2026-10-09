@@ -94,6 +94,8 @@ const s = d.hero.sheet
     const PIVOT_Y = 24      // y del enganche en reposo (relativo al contenedor)
     const GRAVITY = 0.55
     const DAMP = 0.992
+    const MIN_DROP = 0.8    // la tarjeta no sube por encima del 80 % de la cuerda
+    const MAX_ANGLE = 65    // grados: nunca queda boca abajo
     let pts: P[] = []
     let seg = 0, ropeLen = 0
     let ax = 0, ay = 0
@@ -120,7 +122,8 @@ const s = d.hero.sheet
 
     const render = () => {
       const last = pts[N], ref = pts[N - 3]
-      const ang = -Math.atan2(last.x - ref.x, last.y - ref.y) * (180 / Math.PI)
+      const raw = -Math.atan2(last.x - ref.x, last.y - ref.y) * (180 / Math.PI)
+      const ang = Math.max(-MAX_ANGLE, Math.min(MAX_ANGLE, raw))
       card.style.transform = `translate(${last.x - ax}px, ${last.y - PIVOT_Y}px) rotate(${ang}deg)`
       const d = pts.map((p, i) => `${i ? 'L' : 'M'}${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(' ')
       strap.setAttribute('d', d)
@@ -139,7 +142,7 @@ const s = d.hero.sheet
       }
       if (dragging) {
         // la tarjeta sigue al puntero sin pasar de la longitud de la cinta
-        let dx = tx - ax, dy = ty - ay
+        let dx = tx - ax, dy = Math.max(ty - ay, ropeLen * MIN_DROP)
         const d = Math.hypot(dx, dy)
         if (d > ropeLen) { dx = (dx / d) * ropeLen; dy = (dy / d) * ropeLen }
         pts[N].x = ax + dx; pts[N].y = ay + dy
@@ -149,6 +152,7 @@ const s = d.hero.sheet
           const a = pts[i], b = pts[i + 1]
           const dx = b.x - a.x, dy = b.y - a.y
           const d = Math.hypot(dx, dy) || 1e-4
+          if (d <= seg) continue        // cuerda, no varilla: puede quedar floja
           const k = (d - seg) / d
           const aFixed = i === 0
           const bFixed = dragging && i + 1 === N
@@ -197,9 +201,23 @@ const s = d.hero.sheet
       const m = local(e)
       tx = m.x - offX; ty = m.y - offY
     })
-    const release = () => { dragging = false; card.classList.remove('dragging'); wake() }
+    const release = () => {
+      if (!dragging) return
+      dragging = false
+      card.classList.remove('dragging')
+      // pequeño empujón lateral aleatorio: evita equilibrios inestables
+      const kick = (Math.random() - 0.5) * 1.2
+      for (let i = N - 3; i <= N; i++) pts[i].px -= kick
+      wake()
+    }
     card.addEventListener('pointerup', release)
     card.addEventListener('pointercancel', release)
+    card.addEventListener('lostpointercapture', release)
+    // si el botón ya no está pulsado (soltado fuera de la ventana), suelta
+    card.addEventListener('pointermove', e => { if (dragging && e.buttons === 0 && e.pointerType === 'mouse') release() })
+    window.addEventListener('pointerup', release)
+    window.addEventListener('blur', release)
+    document.addEventListener('visibilitychange', () => { if (document.hidden) release() })
     window.addEventListener('resize', () => { build(false); render(); wake() })
 
     // solo simula mientras está en pantalla
