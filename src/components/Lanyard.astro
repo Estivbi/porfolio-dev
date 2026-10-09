@@ -96,6 +96,9 @@ const s = d.hero.sheet
     const DAMP = 0.992
     const MIN_DROP = 0.8    // la tarjeta no sube por encima del 80 % de la cuerda
     const MAX_ANGLE = 65    // grados: nunca queda boca abajo
+    const S_MAX = 1.9       // la cinta puede estirarse hasta 1,9 veces su longitud (efecto acordeón)
+    const SPRING = 0.03     // fuerza con la que vuelve a su longitud al soltar
+    const SPRING_DAMP = 0.8 // amortiguación del rebote (más bajo = menos rebote)
     let pts: P[] = []
     let seg = 0, ropeLen = 0
     let ax = 0, ay = 0
@@ -103,6 +106,7 @@ const s = d.hero.sheet
     let offX = 0, offY = 0
     let tx = 0, ty = 0
     let raf = 0, calm = 0
+    let stretch = 1, stretchV = 0   // factor de estiramiento y su velocidad
 
     const build = (kick: boolean) => {
       const r = root.getBoundingClientRect()
@@ -113,6 +117,7 @@ const s = d.hero.sheet
       ay = window.matchMedia('(min-width: 1024px)').matches ? s.top - r.top : -64
       ropeLen = PIVOT_Y - ay
       seg = ropeLen / N
+      stretch = 1; stretchV = 0
       pts = Array.from({ length: N + 1 }, (_, i) => {
         const y = ay + (ropeLen * i) / N
         const v = kick ? (i / N) * 11 : 0   // empujón inicial: la tarjeta entra balanceándose
@@ -128,10 +133,25 @@ const s = d.hero.sheet
       const d = pts.map((p, i) => `${i ? 'L' : 'M'}${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(' ')
       strap.setAttribute('d', d)
       stitch.setAttribute('d', d)
+      // al estirarse, la cinta se adelgaza y las costuras se separan
+      strap.setAttribute('stroke-width', String(14 / Math.sqrt(Math.max(stretch, 0.6))))
+      stitch.setAttribute('stroke-dasharray', `${(3 * stretch).toFixed(1)} ${(7 * stretch).toFixed(1)}`)
     }
 
     const step = () => {
       let energy = 0
+      if (dragging) {
+        // la cinta se alarga lo justo para llegar al puntero
+        const dist = Math.hypot(tx - ax, Math.max(ty - ay, ropeLen * MIN_DROP))
+        stretch = Math.max(1, Math.min(S_MAX, dist / ropeLen)); stretchV = 0
+      } else {
+        // al soltar, vuelve a su longitud como un muelle (con rebote)
+        stretchV += -(stretch - 1) * SPRING
+        stretchV *= SPRING_DAMP
+        stretch = Math.max(0.97, stretch + stretchV)   // al rebotar casi no se comprime
+        energy += Math.abs(stretchV) * 40 + Math.abs(stretch - 1) * 4
+      }
+      const L = seg * stretch
       for (let i = 1; i <= N; i++) {
         const p = pts[i]
         if (dragging && i === N) { p.px = p.x; p.py = p.y; continue }
@@ -144,7 +164,7 @@ const s = d.hero.sheet
         // la tarjeta sigue al puntero sin pasar de la longitud de la cinta
         let dx = tx - ax, dy = Math.max(ty - ay, ropeLen * MIN_DROP)
         const d = Math.hypot(dx, dy)
-        if (d > ropeLen) { dx = (dx / d) * ropeLen; dy = (dy / d) * ropeLen }
+        if (d > ropeLen * stretch) { dx = (dx / d) * ropeLen * stretch; dy = (dy / d) * ropeLen * stretch }
         pts[N].x = ax + dx; pts[N].y = ay + dy
       }
       for (let it = 0; it < 16; it++) {
@@ -152,8 +172,8 @@ const s = d.hero.sheet
           const a = pts[i], b = pts[i + 1]
           const dx = b.x - a.x, dy = b.y - a.y
           const d = Math.hypot(dx, dy) || 1e-4
-          if (d <= seg) continue        // cuerda, no varilla: puede quedar floja
-          const k = (d - seg) / d
+          if (d <= L) continue          // cuerda, no varilla: puede quedar floja
+          const k = (d - L) / d
           const aFixed = i === 0
           const bFixed = dragging && i + 1 === N
           if (aFixed && !bFixed) { b.x -= dx * k; b.y -= dy * k }
