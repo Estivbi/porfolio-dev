@@ -47,7 +47,7 @@ const img = (name: string) => (name ? imgs[`../assets/experience/${name}`]?.defa
 <style>
   .line { position: relative; border-top: 1px solid #262c37; }
   .line::before { content: ''; position: absolute; left: 6px; top: 0; bottom: 0; width: 2px; background: #262c37; }
-  li { border-bottom: 1px solid #262c37; }
+  .line > li { border-bottom: 1px solid #262c37; }
   summary::-webkit-details-marker { display: none; }
   details[open] > summary .chev { transform: rotate(45deg); color: #f2a33a; }
   .chev { display: inline-block; transition: transform 320ms cubic-bezier(.2,.7,.2,1); font-size: 1.1rem; }
